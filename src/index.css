@@ -154,8 +154,12 @@ a:hover {
 }
 #About {
   height: auto;
+}  
+.sm-exist{
+  display: none !important;
 }
 @media only screen and (max-width: 768px) {
+ 
   .social-link {
     width: 30px !important;
   }
@@ -194,7 +198,9 @@ a:hover {
 }
 
 @media only screen and (max-width: 1024px) {
-  
+  .sm-exist{
+    display: block !important;
+  }
   .flex-reverse-md {
     flex-direction: column-reverse;
   }
