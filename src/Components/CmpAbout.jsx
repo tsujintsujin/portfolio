@@ -53,7 +53,7 @@ export default function About() {
               I am an passionate Full Stack Web Developer specializing in HTML,
               CSS, JavaScript, and React. I excel in creating responsive
               websites with smooth user experiences. My skills include designing
-              interactive interfaces using efficient code and staying up-to-date
+              interactive interfaces using Figma and staying up-to-date
               with the latest development tools. I am also proficient in Adobe
               software such as Illustrator, Photoshop, and After Effects for
               design purposes.
