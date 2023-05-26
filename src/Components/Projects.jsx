@@ -15,7 +15,8 @@ export default function Projects() {
         3000, // Waits 1s
         'care', // Deletes 'One' and types 'Two'
         3000, // Waits 2s
-        'attention', // Types 'Three' without deleting 'Two'
+        'attention',
+        3000, // Types 'Three' without deleting 'Two'
         () => {
           console.log('Sequence completed'); // Place optional callbacks anywhere in the array
         }
