@@ -19,19 +19,26 @@ body strong {
 h1 {
   font-size: 4rem !important ;
 }
-.vertical {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
+
 div {
   /* border: 1px dotted rgba(0, 0, 0, 0.1); */
 }
 
-a:hover{
+a:hover {
   color: rgba(164, 95, 38) !important;
 }
+.parallax-container {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+}
 
+.parallax-image {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
 .text-main {
   color: rgba(164, 95, 38);
 }
@@ -42,7 +49,10 @@ a:hover{
   border-radius: 15px;
 }
 .space {
-  height: 25vh;
+  height: 30vh;
+}
+.vh-50 {
+  height: 50vh;
 }
 .profile-image {
   object-fit: contain;
@@ -57,15 +67,25 @@ a:hover{
   overflow: hidden;
   animation: blob 30s linear infinite;
 }
-
+.shadow-card {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
 .social-link {
   width: 45px !important;
   filter: grayscale(100%) brightness(0%);
   cursor: pointer;
 }
 
+#Projects .social-link {
+  width: 35px !important;
+}
+.project-container {
+  height: 400px;
+}
 
-
+.project-image {
+  width: 100%;
+}
 .bottom {
   filter: grayscale(100%) brightness(100000%);
 }
@@ -82,10 +102,16 @@ a:hover{
   z-index: 1;
 }
 
-.nav-shadow{
+.nav-shadow {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+.nav-link.active {
+  font-weight: bold;
+}
+.no-wrap {
+  white-space: nowrap;
+}
 
 .tech-stack-container {
   justify-content: center;
@@ -96,12 +122,76 @@ a:hover{
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   border-radius: 50%;
 }
+
+.popup-nav {
+  z-index: 100;
+
+  transform: translateX(-100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.popup-nav.active {
+  transform: translateY(0%);
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler {
+  width: 35px;
+  height: 35px;
+  padding: 0 !important;
+}
+
+.navbar-toggler-icon {
+  width: 18px !important;
+  height: 18px !important;
+}
+#About {
+  height: auto;
+}
 @media only screen and (max-width: 768px) {
+  .social-link {
+    width: 30px !important;
+  }
+  .profile-image {
+    transform: scale(1.2);
+  }
+  .project-container {
+    height: 250px;
+  }
+  .profile-image-container {
+    width: 250px;
+    height: 250px;
+    border: 5px solid black !important;
+    overflow: hidden;
+    animation: blob 30s linear infinite;
+  }
+  .name-brand {
+    font-size: 11vw !important;
+  }
+  #Home h1 {
+    font-size: 2rem !important;
+  }
+  #About {
+    height: auto;
+  }
+  .parallax-image {
+    position: relative;
+    width: 150%;
+  }
+  .parallax-container {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
   .flex-reverse-md {
     flex-direction: column-reverse;
+  }
+  .rotate {
+    display: none;
   }
 }
 
@@ -136,4 +226,5 @@ a:hover{
 }
 .rotate {
   animation: rotation 30s infinite linear;
+  border-radius: 50%;
 }

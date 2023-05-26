@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import { image } from "../Files/image";
 
 export default function Header() {
+
+
+
   return (
     <>
       <div id="Home" className="container py-5 mt-5">
@@ -13,14 +16,14 @@ export default function Header() {
             <div className="row">
               <div className="col ">
                 <div className="">
-                  <h1 className="fw-bold">Full Stack Web Developer</h1>
-                  <h5 className="text-muted my-4 pe-5">
+                  <h1 className="fw-bold my-4">Full Stack Web Developer</h1>
+                  <h5 className="text-muted my-4 my-lg-4 pe-lg-5">
                     Hi, I'm Justin. A passionate Full Stack Web Developer based
                     in Mindanao, Philippines.
                   </h5>
-                  <div className="row p-0 m-0 justify-content-center justify-content-lg-start">
+                  <div className="row p-0 m-0 gap-0 gap-lg-3 justify-content-evenly justify-content-lg-start mt-3">
                     <a
-                      className="social-link p-0 me-3"
+                      className="social-link p-0"
                       href="https://www.linkedin.com/in/justin-masiga-992772236/"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -32,15 +35,15 @@ export default function Header() {
                       />
                     </a>
                     <a
-                      className="social-link p-0 me-3"
-                      href="https://github.com/tsujintsujin"
+                      className="social-link p-0"
+                      href="https://github.com/tsujintsujin"  
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <img className="social-link" src={image.git} alt="" />
                     </a>
                     <a
-                      className="social-link p-0 me-3"
+                      className="social-link p-0 "
                       href="https://facebook.com/tsujiiin"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -66,7 +69,7 @@ export default function Header() {
           </div>
         </div>
         <h5 className="fw-bold pt-5 m-0 mb-3 text-center text-lg-start">Tech Stack: </h5>
-        <div className=" p-0 m-0 d-flex flex-wrap gap-3 grid">
+        <div className=" p-0 m-0 d-flex flex-wrap gap-3 d-sm-flex justify-content-center justify-content-lg-start">
           <div className="tech-stack-container">
             <img
               className="tech-stack"

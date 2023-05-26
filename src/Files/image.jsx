@@ -12,7 +12,12 @@ import php from "./php.svg";
 import javascript from "./javascript.svg";
 import react from "./react.svg";
 import desk from "./desk.jpg";
+import about from "./about.jpg";
+import mkdph from "./mkdph.png";
+import chodae from "./chodae.png";
+import weddii from "./weddii.png";
 import spin from "./spin.svg";
+import demo from "./demo.svg";
 
 export const image = {
   justin,
@@ -29,4 +34,9 @@ export const image = {
   react,
   desk,
   spin,
+  demo,
+  about,
+  mkdph,
+  chodae,
+  weddii,
 };

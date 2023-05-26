@@ -4,6 +4,7 @@ import { Link } from "react-scroll";
 import { image } from "../Files/image";
 
 export default function Footer() {
+  
   const scrollToDiv = () => {
     const targetDiv = document.getElementById("targetDiv");
     if (targetDiv) {
@@ -59,7 +60,7 @@ export default function Footer() {
                 smooth={true}
                 onClick={scrollToDiv}
                 offset={-200}
-                className="nav-link active"
+                className="nav-link"
                 aria-current="page"
                 href="#"
               >

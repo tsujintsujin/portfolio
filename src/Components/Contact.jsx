@@ -73,7 +73,7 @@ export default function Contact() {
 
   return (
     <>
-      <div id="Contact" className="container p-5">
+      <div id="Contact" className="container p-3">
         <div className="row justify-content-center">
           <div className="col-12 col-lg-6 p-0">
             <form ref={form} onSubmit={sendEmail} className="">
@@ -130,7 +130,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   value="Send"
-                  className="col mt-4 btn btn-primary col"
+                  className="col mt-4 btn btn-dark col"
                 >
                   Send
                 </button>
@@ -139,7 +139,7 @@ export default function Contact() {
           </div>
           <div className="col-12 col-lg-6 position-relative p-0 m-0">
             <div className="h-100 text-end d-flex flex-column justify-content-end align-items-end">
-              <h1 className="fw-bold">JUSTIN M</h1>
+              <h1 className="name-brand fw-bold no-wrap mt-5 mt-lg-0">JUSTIN M</h1>
               <h5 className="text-main ">FULL STACK WEB DEVELOPER</h5>
             </div>
           </div>
