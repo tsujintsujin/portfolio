@@ -94,7 +94,7 @@ export default function Projects() {
                   <div className="d-flex mt-5 justify-content-center">
                     <h6 className="">
                       <span className="py-2 px-3 m-2 bg-white shadow-card border-rad-15 no-wrap">
-                        React
+                        HTML
                       </span>
                       <span className="py-2 px-3 m-2 bg-white shadow-card border-rad-15 no-wrap">
                         Vanila CSS
@@ -158,7 +158,7 @@ export default function Projects() {
                         Vanila CSS
                       </span>
                       <span className="py-2 px-3 m-2 bg-white shadow-card border-rad-15 no-wrap">
-                        Google API's
+                        Google Maps API
                       </span>
                     </h6>
                   </div>
