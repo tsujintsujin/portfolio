@@ -25,6 +25,7 @@ import ae from "./ae.svg";
 import ps from "./ps.svg";
 import lr from "./lr.svg";
 import premiere from "./premiere.svg";
+import figma from "./figma.svg";
 
 
 export const image = {
@@ -52,4 +53,5 @@ ae,
 ps,
 lr,
 premiere,
+figma,
 };

@@ -102,7 +102,9 @@ export default function Header() {
         </div>
         <h5 className="fw-bold pt-5 m-0 mb-3 text-center text-lg-start">Additional Skills: </h5>
         <div className=" p-0 m-0 d-flex flex-wrap gap-3 d-sm-flex justify-content-center justify-content-lg-start">
-         
+        <div className="tech-stack-container">
+            <img className="tech-stack" src={image.figma} alt=""  title="PHP"/>
+          </div>
           <div className="tech-stack-container ">
             <img className="tech-stack" src={image.ai} alt=""  title="CSS 3"/>
           </div>
@@ -118,7 +120,7 @@ export default function Header() {
           <div className="tech-stack-container">
             <img className="tech-stack" src={image.premiere} alt=""  title="PHP"/>
           </div>
-        
+          
           
         </div>
       </div>
