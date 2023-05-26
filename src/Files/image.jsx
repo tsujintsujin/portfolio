@@ -11,13 +11,21 @@ import mysql from "./mysql.svg";
 import php from "./php.svg";
 import javascript from "./javascript.svg";
 import react from "./react.svg";
-import desk from "./desk.jpg";
-import about from "./about.jpg";
+import spin from "./spin.svg";
+import demo from "./demo.svg";
+
 import mkdph from "./mkdph.png";
 import chodae from "./chodae.png";
 import weddii from "./weddii.png";
-import spin from "./spin.svg";
-import demo from "./demo.svg";
+import desk from "./desk.jpg";
+import about from "./about.jpg";
+
+import ai from "./ai.svg";
+import ae from "./ae.svg";
+import ps from "./ps.svg";
+import lr from "./lr.svg";
+import premiere from "./premiere.svg";
+
 
 export const image = {
   justin,
@@ -39,4 +47,9 @@ export const image = {
   mkdph,
   chodae,
   weddii,
+  ai,
+ae,
+ps,
+lr,
+premiere,
 };

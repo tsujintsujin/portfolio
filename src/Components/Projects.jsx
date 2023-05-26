@@ -1,5 +1,6 @@
 import React from "react";
 import { image } from "../Files/image";
+import { TypeAnimation } from 'react-type-animation';
 
 export default function Projects() {
   return (
@@ -7,7 +8,26 @@ export default function Projects() {
       <div id="Projects" className="h-100 container p-lg-5 px-0 ">
         <h5 className="fw-bold text-main  px-2">Projects</h5>
         <h4 className="fw-bold text-muted mb-5  px-2">
-          Each project is made with passion
+          <span>Each project is made with </span>
+        <TypeAnimation
+      sequence={[
+        'passion', // Types 'One'
+        3000, // Waits 1s
+        'care', // Deletes 'One' and types 'Two'
+        3000, // Waits 2s
+        'attention', // Types 'Three' without deleting 'Two'
+        () => {
+          console.log('Sequence completed'); // Place optional callbacks anywhere in the array
+        }
+      ]}
+      wrapper="span"
+      cursor={true}
+      repeat={Infinity}
+      style={{ fontSize: '1.5rem', display: 'inline-block' }}
+    />
+   
+
+          
         </h4>
 
         <div className="container-fluid p-0 ">

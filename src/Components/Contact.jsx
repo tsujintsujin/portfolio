@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { image } from "../Files/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -137,10 +138,14 @@ export default function Contact() {
               </div>
             </form>
           </div>
-          <div className="col-12 col-lg-6 position-relative p-0 m-0">
-            <div className="h-100 text-end d-flex flex-column justify-content-end align-items-end">
+          <div className="col-12 col-lg-6 position-relative p-0 m-0 overflow-hidden">
+            <div className="h-100 text-end d-flex flex-column  justify-content-end align-items-end">
               <h1 className="name-brand fw-bold no-wrap mt-5 mt-lg-0">JUSTIN M</h1>
-              <h5 className="text-main ">FULL STACK WEB DEVELOPER</h5>
+              <img
+              className="rotate position-absolute spinning-img-contact bg-white "
+              src={image.spin}
+              alt=""
+            />
             </div>
           </div>
         </div>

@@ -65,7 +65,7 @@ a:hover {
   height: 400px;
   border: 5px solid black !important;
   overflow: hidden;
-  animation: blob 30s linear infinite;
+  animation: blob 20s linear infinite;
 }
 .shadow-card {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
@@ -100,6 +100,13 @@ a:hover {
   top: -65px;
   left: -65px;
   z-index: 1;
+}
+
+.spinning-img-contact{
+  height: 50rem;
+  top: 20%;
+  left: 8%;
+  z-index: -10;
 }
 
 .nav-shadow {
@@ -187,6 +194,7 @@ a:hover {
 }
 
 @media only screen and (max-width: 1024px) {
+  
   .flex-reverse-md {
     flex-direction: column-reverse;
   }
