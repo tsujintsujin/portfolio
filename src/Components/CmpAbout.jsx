@@ -31,7 +31,7 @@ export default function About() {
         <div className="row">
           <div className="col-12 col-md-6 position-relative">
             <img
-              className="rotate position-absolute spinning-img bg-white "
+              className="rotate position-absolute spinning-img  "
               src={image.spin}
               alt=""
             />
