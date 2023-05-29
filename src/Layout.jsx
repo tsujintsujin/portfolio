@@ -29,11 +29,11 @@ export default function Layout() {
         <Projects />
         <div className="space"></div>
       </div>
-      <div data-index="2">
+      <div data-index="3">
         <Certificate />
         <div className="space"></div>
       </div>
-      <div  data-index="3">
+      <div  data-index="4">
       <Contact />
         <div className="space"></div>
         

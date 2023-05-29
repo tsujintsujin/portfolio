@@ -6,7 +6,7 @@ export default function CmpCertificate() {
   
   return (
     <>
-      <div id="Certificate" className="container p-0">
+      <div id="Certification" className="container p-0">
         <div className="row">
           <div className="col-12 col-md-6 d-flex flex-column justify-content-center align-content-center">
             <h5 className="fw-bold text-main mt-4 mt-lg-0 px-2  border-3 borsd">Certification</h5>

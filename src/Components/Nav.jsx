@@ -71,7 +71,7 @@ export default function Nav(props) {
                     to="About"
                     smooth={true}
                     onClick={scrollToDiv}
-                    offset={-250}
+                    offset={-350}
                     className={`nav-link ${checkActive("About")}`}
                     aria-current="page"
                     href="#"
@@ -93,11 +93,24 @@ export default function Nav(props) {
                   </Link>
                 </li>
                 <li className="nav-item">
+            <Link
+              to="Certification"
+              smooth={true}
+              onClick={scrollToDiv}
+              offset={-300}
+              className={`nav-link ${checkActive("Certification")}`}
+              aria-current="page"
+              href="#"
+            >
+              Certification
+            </Link>
+          </li>
+                <li className="nav-item">
                   <Link
                     to="Contact"
                     smooth={true}
                     onClick={scrollToDiv}
-                    offset={-100}
+                    offset={-180}
                     className={`nav-link ${checkActive("Contact")}`}
                     aria-current="page"
                     href="#"
@@ -150,6 +163,19 @@ export default function Nav(props) {
               href="#"
             >
               Projects
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="Certification"
+              smooth={true}
+              onClick={sideNavToggle}
+              offset={-80}
+              className={`nav-link ${checkActive("Certification")}`}
+              aria-current="page"
+              href="#"
+            >
+              Certification
             </Link>
           </li>
           <li className="nav-item">
