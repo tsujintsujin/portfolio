@@ -78,11 +78,11 @@ export default function Contact() {
         <div className="row justify-content-center">
           <div className="col-12 col-lg-6 p-0">
             <form ref={form} onSubmit={sendEmail} className="">
-              <h5 className="fw-bold text-main">Looking for me?</h5>
+              <h5 className="fw-bold text-main">Want to build your dream website?</h5>
               <p className="">
                 <strong className="fs-3">
                   {" "}
-                  You can leave me a message here
+                  Request for a quotation here.
                 </strong>
               </p>
               <div className="form-group">
@@ -111,7 +111,7 @@ export default function Contact() {
                   required
                 />
                 <small id="emailHelp" className="ps-2 form-text text-muted">
-                  No worries, I won't ever share your email to anyone.
+                  No worries, I won't share your email to anyone.
                 </small>
               </div>
               <div className="form-group mt-4">
