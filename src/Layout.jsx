@@ -5,6 +5,7 @@ import Header from "./Components/Header";
 import Projects from "./Components/Projects";
 import Contact from "./Components/Contact";
 import About from "./Components/CmpAbout";
+import Certificate from "./Components/CmpCertificate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 
@@ -28,7 +29,10 @@ export default function Layout() {
         <Projects />
         <div className="space"></div>
       </div>
-
+      <div data-index="2">
+        <Certificate />
+        <div className="space"></div>
+      </div>
       <div  data-index="3">
       <Contact />
         <div className="space"></div>

@@ -103,22 +103,22 @@ export default function Header() {
         <h5 className="fw-bold pt-5 m-0 mb-3 text-center text-lg-start">Additional Skills: </h5>
         <div className=" p-0 m-0 d-flex flex-wrap gap-3 d-sm-flex justify-content-center justify-content-lg-start">
         <div className="tech-stack-container">
-            <img className="tech-stack" src={image.figma} alt=""  title="PHP"/>
+            <img className="tech-stack" src={image.figma} alt=""  title="Figma"/>
           </div>
           <div className="tech-stack-container ">
-            <img className="tech-stack" src={image.ai} alt=""  title="CSS 3"/>
+            <img className="tech-stack" src={image.ai} alt=""  title="Illustrator"/>
           </div>
           <div className="tech-stack-container">
-            <img className="tech-stack" src={image.ae} alt=""  title="Javascript"/>
+            <img className="tech-stack" src={image.ae} alt=""  title="After Effects"/>
           </div>
           <div className="tech-stack-container">
-            <img className="tech-stack" src={image.ps} alt="" title="Bootstrap" />
+            <img className="tech-stack" src={image.ps} alt="" title="Photoshop" />
           </div>
           <div className="tech-stack-container">
-            <img className="tech-stack" src={image.lr} alt=""  title="React"/>
+            <img className="tech-stack" src={image.lr} alt=""  title="Lightroom"/>
           </div>
           <div className="tech-stack-container">
-            <img className="tech-stack" src={image.premiere} alt=""  title="PHP"/>
+            <img className="tech-stack" src={image.premiere} alt=""  title="Premiere"/>
           </div>
           
           

@@ -19,6 +19,7 @@ import chodae from "./chodae.png";
 import weddii from "./weddii.png";
 import desk from "./desk.jpg";
 import about from "./about.jpg";
+import cert from "./Cert.webp";
 
 import ai from "./ai.svg";
 import ae from "./ae.svg";
@@ -54,4 +55,5 @@ ps,
 lr,
 premiere,
 figma,
+cert,
 };

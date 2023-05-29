@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { image } from "../Files/image";
 
-export default function About() {
+export default function CmpAbout() {
   useEffect(() => {
     const parallax = () => {
       const scrollTop =
