@@ -2,16 +2,16 @@ import React, { useRef, useState } from "react";
 import { image } from "../Files/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 import emailjs from "@emailjs/browser";
 
 export default function Contact() {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const form = useRef();
-
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -50,12 +50,12 @@ export default function Contact() {
             )
             .then(
               (result) => {
-                resolve(); 
+                resolve();
                 console.log(result.text);
                 clearInputs();
               },
               (error) => {
-                reject(error); 
+                reject(error);
                 console.log(error.text);
               }
             );
@@ -111,7 +111,7 @@ export default function Contact() {
                   required
                 />
                 <small id="emailHelp" className="ps-2 form-text text-muted">
-                  I would need your email to reply.
+                  No worries, I won't ever share your email to anyone.
                 </small>
               </div>
               <div className="form-group mt-4">
@@ -140,12 +140,20 @@ export default function Contact() {
           </div>
           <div className="col-12 col-lg-6 position-relative p-0 m-0 overflow-hidden">
             <div className="h-100 text-end d-flex flex-column  justify-content-end align-items-end">
-              <h1 className="name-brand fw-bold no-wrap mt-5 mt-lg-0">JUSTIN M</h1>
+              <h1 className="name-brand fw-bold no-wrap mt-5 mt-lg-0 ">
+                JUSTIN M
+              </h1>
+
+              <h6 className="text-muted ">
+                <FontAwesomeIcon icon={faEnvelope} className="pe-2" />
+                justin.masiga.94@gmail.com
+              </h6>
+
               <img
-              className="rotate position-absolute spinning-img-contact bg-white "
-              src={image.spin}
-              alt=""
-            />
+                className="rotate position-absolute spinning-img-contact bg-white"
+                src={image.spin}
+                alt=""
+              />
             </div>
           </div>
         </div>

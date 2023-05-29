@@ -4,7 +4,6 @@ import { Link } from "react-scroll";
 import { image } from "../Files/image";
 
 export default function Footer() {
-  
   const scrollToDiv = () => {
     const targetDiv = document.getElementById("targetDiv");
     if (targetDiv) {
@@ -19,7 +18,8 @@ export default function Footer() {
       <div className="container-fluid bg-dark py-3">
         <div className="container d-flex justify-content-center p-0 text-white">
           <div className="row w-100">
-            <div className="col p-0">
+            <div className="col p-0 d-flex mt-auto">
+              <div>
               <h4 className="fw-bold">Justin M</h4>
               <a
                 className="social-link bottom p-0 me-3"
@@ -52,7 +52,7 @@ export default function Footer() {
                   src={image.facebook}
                   alt=""
                 />
-              </a>
+              </a></div>
             </div>
             <div className="col d-flex flex-column text-end m-0 p-0">
               <Link
@@ -87,6 +87,18 @@ export default function Footer() {
                 href="#"
               >
                 Projects
+              </Link>
+
+              <Link
+                to="Certification"
+                smooth={true}
+                onClick={scrollToDiv}
+                offset={-300}
+                className="nav-link"
+                aria-current="page"
+                href="#"
+              >
+                Certification
               </Link>
               <Link
                 to="Contact"
