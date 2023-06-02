@@ -8,6 +8,7 @@ import About from "./Components/CmpAbout";
 import Certificate from "./Components/CmpCertificate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
+import { image } from "./Files/image";
 
 export default function Layout() {
 
@@ -19,12 +20,10 @@ export default function Layout() {
         <Header />
         <div className="space"></div>
       </div>
-
       <div data-index="1">
         <About />
         <div className="space"></div>
       </div>
-
       <div data-index="2">
         <Projects />
         <div className="space"></div>
@@ -36,9 +35,7 @@ export default function Layout() {
       <div  data-index="4">
       <Contact />
         <div className="space"></div>
-        
       </div>
-      
       <Footer />
     </>
   );

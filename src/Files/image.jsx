@@ -17,6 +17,7 @@ import demo from "./demo.svg";
 import mkdph from "./mkdph.png";
 import chodae from "./chodae.png";
 import weddii from "./weddii.png";
+import flow from "./Flow.png";
 import desk from "./desk.jpg";
 import about from "./about.jpg";
 import cert from "./Cert.webp";
@@ -49,6 +50,7 @@ export const image = {
   mkdph,
   chodae,
   weddii,
+  flow,
   ai,
 ae,
 ps,

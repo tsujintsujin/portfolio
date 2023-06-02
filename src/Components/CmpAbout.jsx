@@ -50,7 +50,7 @@ export default function CmpAbout() {
               A dedicated Full Stack Web Developer.
             </h4>
             <h5 className="px-2">
-              I am an passionate Full Stack Web Developer specializing in HTML,
+              I am a passionate Full Stack Web Developer specializing in HTML,
               CSS, JavaScript, and React. I excel in creating responsive
               websites with smooth user experiences. My skills include designing
               interactive interfaces using Figma and staying up-to-date
