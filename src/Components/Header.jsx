@@ -16,9 +16,9 @@ export default function Header() {
             <div className="row">
               <div className="col ">
                 <div className="">
-                  <h1 className="fw-bold my-4">Full Stack Web Developer</h1>
+                  <h1 className="fw-bold my-4">Full Stack Web Developer & <br />Graphic Artist</h1>
                   <h5 className="text-muted my-4 my-lg-4 pe-lg-5">
-                    Hi, I'm Justin. A passionate Full Stack Web Developer based
+                    Hi, I'm Justin. A passionate Full Stack Web Developer & Graphic Artist based
                     in Mindanao, Philippines.
                   </h5>
                   <div className="row p-0 m-0 gap-0 gap-lg-3 justify-content-evenly justify-content-lg-start mt-3">

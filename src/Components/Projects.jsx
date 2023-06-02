@@ -34,7 +34,11 @@ export default function Projects() {
             <div className="row p-lg-5 border-rad-15 ">
               <div className="col-lg-7 p-0">
                 <div className="mt-3 mx-3 mt-lg-0  project-container  border-rad-15 overflow-hidden">
-                  <img className="project-image" src={image.mkdph} alt="" />
+                <a href="https://mkdphtest.vercel.app/" target="_blank" rel="noopener noreferrer">
+  <img className="project-image" src={image.mkdph} alt="" />
+</a>
+
+
                 </div>
               </div>
               <div className="col-lg-5 px-lg-5 py-lg-4 mt-4 ">
@@ -115,7 +119,7 @@ export default function Projects() {
                     <div className="">
                       <a
                         className="social-link p-0   text-decoration-none"
-                        href="https://github.com/tsujintsujin/justinandjecery"
+                        href="https://justinandjecery.vercel.app/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -128,7 +132,9 @@ export default function Projects() {
               </div>
               <div className="col-lg-7 p-0">
                 <div className="mt-3 mx-3 mt-lg-0  project-container bg-dark border-rad-15 overflow-hidden">
+                <a href="https://justinandjecery.vercel.app/" target="_blank" rel="noopener noreferrer">
                   <img className="project-image" src={image.weddii} alt="" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -138,7 +144,9 @@ export default function Projects() {
             <div className="row p-lg-5 border-rad-15">
               <div className="col-lg-7 p-0">
                 <div className="mt-3 mx-3 mt-lg-0  project-container bg-dark border-rad-15 overflow-hidden">
+                <a href="https://github.com/tsujintsujin/chodae" target="_blank" rel="noopener noreferrer">
                   <img className="project-image" src={image.chodae} alt="" />
+                                    </a>
                 </div>
               </div>
               <div className="col-lg-5 px-5 py-4">
