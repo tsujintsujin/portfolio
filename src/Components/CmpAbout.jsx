@@ -51,12 +51,12 @@ export default function CmpAbout() {
             </h4>
             <h5 className="px-2">
               I am a passionate Full Stack Web Developer specializing in HTML,
-              CSS, JavaScript, and React. I excel in creating responsive
-              websites with smooth user experiences. My skills include designing
-              interactive interfaces using Figma and staying up-to-date
-              with the latest development tools. I am also proficient in Adobe
-              software such as Illustrator, Photoshop, and After Effects for
-              design purposes.
+              CSS, JavaScript, React, PHP, MySQL & Laravel. I excel in creating
+              responsive websites with smooth user experiences. My skills
+              include designing interactive interfaces using Figma and staying
+              up-to-date with the latest development tools. I am also proficient
+              in Adobe software such as Illustrator, Photoshop, and After
+              Effects for design purposes.
             </h5>
           </div>
         </div>
