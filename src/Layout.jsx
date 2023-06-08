@@ -6,6 +6,7 @@ import Projects from "./Components/Projects";
 import Contact from "./Components/Contact";
 import About from "./Components/CmpAbout";
 import Certificate from "./Components/CmpCertificate";
+import Jobs from "./Components/CmpJobs";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import { image } from "./Files/image";
@@ -25,14 +26,19 @@ export default function Layout() {
         <div className="space"></div>
       </div>
       <div data-index="2">
-        <Projects />
+        <Jobs />
         <div className="space"></div>
       </div>
-      <div data-index="3">
+      <div data-index="4">
         <Certificate />
         <div className="space"></div>
       </div>
-      <div  data-index="4">
+      <div data-index="3">
+        <Projects />
+        <div className="space"></div>
+      </div>
+    
+      <div  data-index="5">
       <Contact />
         <div className="space"></div>
       </div>

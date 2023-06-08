@@ -5,10 +5,12 @@ import { TypeAnimation } from "react-type-animation";
 export default function Projects() {
   return (
     <>
-      <div id="Projects" className="h-100 container p-lg-5 px-0 ">
+      <div id="Projects" className="h-100 container px-0 ">
         <h5 className="fw-bold text-main  px-2">Projects</h5>
         <h4 className="fw-bold text-muted mb-5  px-2 ">
-          <span className="">Each project is made with <br className="sm-exist"/></span>
+          <span className="">
+            Each project is made with <br className="sm-exist" />
+          </span>
           <TypeAnimation
             sequence={[
               3000,
@@ -34,11 +36,13 @@ export default function Projects() {
             <div className="row p-lg-5 border-rad-15 ">
               <div className="col-lg-7 p-0">
                 <div className="mt-3 mx-3 mt-lg-0  project-container  border-rad-15 overflow-hidden">
-                <a href="https://mkdphtest.vercel.app/" target="_blank" rel="noopener noreferrer">
-  <img className="project-image" src={image.mkdph} alt="" />
-</a>
-
-
+                  <a
+                    href="https://mkdphtest.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img className="project-image" src={image.mkdph} alt="" />
+                  </a>
                 </div>
               </div>
               <div className="col-lg-5 px-lg-5 py-lg-4 mt-4 ">
@@ -132,8 +136,12 @@ export default function Projects() {
               </div>
               <div className="col-lg-7 p-0">
                 <div className="mt-3 mx-3 mt-lg-0  project-container bg-dark border-rad-15 overflow-hidden">
-                <a href="https://justinandjecery.vercel.app/" target="_blank" rel="noopener noreferrer">
-                  <img className="project-image" src={image.weddii} alt="" />
+                  <a
+                    href="https://justinandjecery.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img className="project-image" src={image.weddii} alt="" />
                   </a>
                 </div>
               </div>
@@ -144,9 +152,13 @@ export default function Projects() {
             <div className="row p-lg-5 border-rad-15">
               <div className="col-lg-7 p-0">
                 <div className="mt-3 mx-3 mt-lg-0  project-container bg-dark border-rad-15 overflow-hidden">
-                <a href="https://github.com/tsujintsujin/chodae" target="_blank" rel="noopener noreferrer">
-                  <img className="project-image" src={image.chodae} alt="" />
-                                    </a>
+                  <a
+                    href="https://chodae-seven.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img className="project-image" src={image.chodae} alt="" />
+                  </a>
                 </div>
               </div>
               <div className="col-lg-5 px-5 py-4">

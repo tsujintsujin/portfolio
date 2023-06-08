@@ -20,6 +20,10 @@ import weddii from "./weddii.png";
 import flow from "./Flow.png";
 import desk from "./desk.jpg";
 import about from "./about.jpg";
+import Par1 from "./Par1.png";
+import Par2 from "./Par2.png";
+import Par3 from "./Par3.png";
+
 import cert from "./Cert.webp";
 
 import ai from "./ai.svg";
@@ -31,6 +35,9 @@ import figma from "./figma.svg";
 
 
 export const image = {
+  Par1,
+Par2,
+Par3,
   justin,
   facebook,
   linkedin,

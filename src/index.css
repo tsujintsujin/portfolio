@@ -23,6 +23,13 @@ h1 {
 div {
   /* border: 1px dotted rgba(0, 0, 0, 0.1); */
 }
+.parallax-image-jobs.show{
+  opacity: 1;
+  transition: opacity 0.7s ease-in-out;
+}
+.parallax-image-jobs{
+  opacity: 0;
+}
 
 a:hover {
   color: rgba(164, 95, 38) !important;
@@ -35,6 +42,11 @@ a:hover {
 }
 
 .parallax-image {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+.parallax-image-jobs {
   position: absolute;
   width: 100%;
   height: auto;
@@ -195,7 +207,14 @@ a:hover {
     position: relative;
     border-radius: 15px;
   }
-
+  .parallax-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #ffffff; /* Adjust the text color as needed */
+  }
 }
 
 @media only screen and (max-width: 1024px) {
