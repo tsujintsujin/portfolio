@@ -25,10 +25,10 @@ export default function Layout() {
         <About />
         <div className="space"></div>
       </div>
-      <div data-index="2">
+      {/* <div data-index="2">
         <Jobs />
         <div className="space"></div>
-      </div>
+      </div> */}
       <div data-index="4">
         <Certificate />
         <div className="space"></div>
@@ -37,7 +37,6 @@ export default function Layout() {
         <Projects />
         <div className="space"></div>
       </div>
-    
       <div  data-index="5">
       <Contact />
         <div className="space"></div>
