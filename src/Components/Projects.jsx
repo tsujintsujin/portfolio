@@ -37,7 +37,7 @@ export default function Projects() {
               <div className="col-lg-7 p-0">
                 <div className="mt-3 mx-3 mt-lg-0  project-container  border-rad-15 overflow-hidden">
                   <a
-                    href="https://mkdphtest.vercel.app/"
+                    href="https://mkdedu.info/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -71,7 +71,7 @@ export default function Projects() {
                     <span>
                       <a
                         className="social-link p-0  text-decoration-none"
-                        href="https://mkdphtest.vercel.app/"
+                        href="https://mkdedu.info/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

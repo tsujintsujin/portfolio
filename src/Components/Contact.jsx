@@ -8,10 +8,6 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import emailjs from "@emailjs/browser";
 
 export default function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const form = useRef();
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -25,6 +21,13 @@ export default function Contact() {
     setMessage(e.target.value);
   };
 
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const form = useRef();
+
+ 
   const clearInputs = () => {
     setName("");
     setEmail("");
