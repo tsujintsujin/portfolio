@@ -55,7 +55,6 @@ export default function Projects() {
                     College Japanese School in the Philippines.
                   </h5>
                   <h6 className="text-center text-muted">
-                    (Ongoing development)
                   </h6>
                   <div className="d-flex d-flex mt-5 justify-content-evenly">
                     <h6 className="">
