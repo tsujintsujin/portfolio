@@ -70,7 +70,7 @@ export default function Projects() {
                     <span>
                       <a
                         className="social-link p-0  text-decoration-none"
-                        href="https://mkdedu.info/"
+                        href="https://mkdphtest.vercel.app/MindanaoKokusaiDaigaku"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
