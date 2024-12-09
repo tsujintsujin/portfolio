@@ -6,7 +6,7 @@ const ThemeContext = createContext();
 
 // Create a Provider component
 export const ThemeProvider = ({ children }) => {
-  const [isLightMode, setIsLightMode] = useState(true);
+  const [isLightMode, setIsLightMode] = useState(false);
 
   // Function to toggle the light mode
   const lightModeToggle = () => {
