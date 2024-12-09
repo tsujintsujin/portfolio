@@ -1,8 +1,9 @@
 import React, {useState,useEffect} from "react";
 import { image } from "../Files/image";
+import { useTheme } from '../Components/ThemeContext'; 
 
 export default function Header() {
-
+  const { isLightMode, lightModeToggle } = useTheme(); 
 
 
   return (
@@ -15,21 +16,21 @@ export default function Header() {
           >
             <div className="row">
               <div className="col ">
-                <div className="">
-                  <h1 className="fw-bold my-4">Full Stack Web Developer & <br />Graphic Artist</h1>
-                  <h5 className="text-muted my-4 my-lg-4 pe-lg-5">
+                <div className={``}>
+                  <h1 className={`fw-bold my-4 ${isLightMode ? 'text-dark' : 'text-white'}`}>Full Stack Web Developer & <br />Graphic Artist</h1>
+                  <h5 className={`my-4 my-lg-4 pe-lg-5 ${isLightMode ? 'text-muted' : 'text-white'}`}>
                     Hi, I'm Justin. A passionate Full Stack Web Developer & Graphic Artist based
                     in Mindanao, Philippines.
                   </h5>
                   <div className="row p-0 m-0 gap-0 gap-lg-3 justify-content-evenly justify-content-lg-start mt-3">
                     <a
                       className="social-link p-0"
-                      href="https://www.linkedin.com/in/justin-masiga-992772236/"
+                      href="https://www.linkedin.com/in/justin-m-992772236/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <img
-                        className="social-link"
+                        className="social-link shadow border-rad-50"
                         src={image.linkedin}
                         alt=""
                       />
@@ -40,7 +41,7 @@ export default function Header() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <img className="social-link" src={image.git} alt="" />
+                      <img className="social-link  shadow border-rad-50" src={image.git} alt="" />
                     </a>
                     <a
                       className="social-link p-0 "
@@ -49,7 +50,7 @@ export default function Header() {
                       rel="noopener noreferrer"
                     >
                       <img
-                        className="social-link"
+                        className="social-link  shadow border-rad-50"
                         src={image.facebook}
                         alt=""
                       />
@@ -68,9 +69,9 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <h5 className="fw-bold pt-5 m-0 mb-3 text-center text-lg-start">Tech Stack: </h5>
+        <h5 className={`fw-bold pt-5 m-0 mb-3 text-center text-lg-start ${isLightMode ? 'text-dark' : 'text-white'}`}>Tech Stack: </h5>
         <div className=" p-0 m-0 d-flex flex-wrap gap-3 d-sm-flex justify-content-center justify-content-lg-start">
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img
               className="tech-stack"
               src={image.html}
@@ -78,50 +79,51 @@ export default function Header() {
               title="HTML 5"
             />{" "}
           </div>
-          <div className="tech-stack-container ">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.css3} alt=""  title="CSS 3"/>
           </div>
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.javascript} alt=""  title="Javascript"/>
           </div>
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.bs} alt="" title="Bootstrap" />
           </div>
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.react} alt=""  title="React"/>
           </div>
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.php} alt=""  title="PHP"/>
           </div>
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.mysql} alt=""  title="MySQL" />
           </div>
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.laravel} alt="" title="Laravel" />
           </div>
         </div>
-        <h5 className="fw-bold pt-5 m-0 mb-3 text-center text-lg-start">Additional Skills: </h5>
+        <h5 className={`fw-bold pt-5 m-0 mb-3 text-center text-lg-start ${isLightMode ? 'text-dark' : 'text-white'}`}>Additional Skills: </h5>
         <div className=" p-0 m-0 d-flex flex-wrap gap-3 d-sm-flex justify-content-center justify-content-lg-start">
-        <div className="tech-stack-container">
+        <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.figma} alt=""  title="Figma"/>
           </div>
-          <div className="tech-stack-container ">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
+            <img className="tech-stack" src={image.qs} alt=""  title="Quicksight"/>
+          </div>
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.ai} alt=""  title="Illustrator"/>
           </div>
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.ae} alt=""  title="After Effects"/>
           </div>
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.ps} alt="" title="Photoshop" />
           </div>
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.lr} alt=""  title="Lightroom"/>
           </div>
-          <div className="tech-stack-container">
+          <div className={`tech-stack-container ${isLightMode ? '' : 'bg-night'}`}>
             <img className="tech-stack" src={image.premiere} alt=""  title="Premiere"/>
           </div>
-          
-          
         </div>
       </div>
     </>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { ThemeProvider } from "./Components/ThemeContext";  // Impo
 import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
@@ -15,7 +16,7 @@ export default function Layout() {
 
   
   return (
-    <>
+    <ThemeProvider>
       <Nav />
       <div data-index="0">
         <Header />
@@ -42,6 +43,6 @@ export default function Layout() {
         <div className="space"></div>
       </div>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }

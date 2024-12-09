@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-
 import { image } from "../Files/image";
+import { useTheme } from '../Components/ThemeContext'; 
 
 export default function CmpCertificate() {
-  
+  const { isLightMode, lightModeToggle } = useTheme(); 
+
   return (
     <>
       <div id="Certification" className="container p-0">
@@ -12,11 +13,11 @@ export default function CmpCertificate() {
             <h5 className="fw-bold text-main mt-4 mt-lg-0 px-2  border-3 borsd">Certification</h5>
             <hr className=""/>
 
-            <h4 className="fw-bold mb-2 text-muted  px-2">
+            <h4 className={`fw-bold mb-2  px-2 ${isLightMode ? 'text-dark' : ''}`}>
               {" "}
               Kodego Full Stack Web Developer
             </h4>
-            <h6 className="mb-2 text-muted  px-2">Batch Top Student</h6>
+            <h6 className={`mb-2 ${isLightMode ? 'text-muted' : ''} px-2`}>Batch Top Student</h6>
             <h5 className="px-2">
              
             </h5>

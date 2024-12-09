@@ -4,10 +4,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-
+import { useTheme } from '../Components/ThemeContext'; 
 import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const { isLightMode, lightModeToggle } = useTheme(); 
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -81,50 +82,50 @@ export default function Contact() {
         <div className="row justify-content-center">
           <div className="col-12 col-lg-6 p-0">
             <form ref={form} onSubmit={sendEmail} className="">
-              <h5 className="fw-bold text-main">Want to build your dream website?</h5>
+              <h5 className="fw-bold text-main">Want to build your website?</h5>
               <p className="">
-                <strong className="fs-3">
+                <strong className={`fs-3 ${isLightMode ? 'text-muted' : 'text-white'}`}>
                   {" "}
-                  Request for a quotation here.
+                  Let's Connect.
                 </strong>
               </p>
               <div className="form-group">
-                <label className="ps-2">Your Name</label>
+                <label className={`ps-2 ${isLightMode ? 'text-muted' : 'text-white'}`}>Your Name</label>
                 <input
                   type="text"
                   className="form-control"
                   id="inputName"
                   name="from_name"
-                  placeholder="Name"
+                  placeholder="e.g. Justin M"
                   value={name}
                   onChange={handleNameChange}
                   required
                 />
               </div>
               <div className="form-group mt-4">
-                <label className="ps-2 ">Your Email</label>
+                <label className={`ps-2 ${isLightMode ? 'text-muted' : 'text-white'}`}>Your Email</label>
                 <input
                   type="text"
                   className="form-control"
                   id="inputEmail"
                   name="from_email"
-                  placeholder="Email"
+                  placeholder="e.g. justin.masiga.94@gmail.com"
                   value={email}
                   onChange={handleEmailChange}
                   required
                 />
-                <small id="emailHelp" className="ps-2 form-text text-muted">
+                <small id="emailHelp" className="ps-2 form-text text-white">
                   No worries, I won't share your email to anyone.
                 </small>
               </div>
               <div className="form-group mt-4">
-                <label className="ps-2">Message</label>
+                <label className={`ps-2 ${isLightMode ? 'text-muted' : 'text-white'}`}>Message</label>
                 <textarea
                   className="form-control"
                   name="message"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  placeholder="What do you want to tell me?"
+                  placeholder="Got something for me?"
                   value={message}
                   onChange={handleMessageChange}
                   required
@@ -134,7 +135,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   value="Send"
-                  className="col mt-4 btn btn-dark col"
+                  className={`col mt-4 btn  ${isLightMode ? 'btn-dark' : 'btn-white'} col`}
                 >
                   Send
                 </button>
@@ -143,17 +144,18 @@ export default function Contact() {
           </div>
           <div className="col-12 col-lg-6 position-relative p-0 m-0 overflow-hidden">
             <div className="h-100 text-end d-flex flex-column  justify-content-end align-items-end">
-              <h1 className="name-brand fw-bold no-wrap mt-5 mt-lg-0 ">
+              <h1 className="name-brand fw-bold no-wrap mt-5 mt-lg-0 text-main ">
                 JUSTIN M
               </h1>
 
-              <h6 className="text-muted ">
-                <FontAwesomeIcon icon={faEnvelope} className="pe-2" />
+              <h6 className={`${isLightMode ? 'text-muted' : 'text-white'}`}>
+                <FontAwesomeIcon icon={faEnvelope} className={`pe-2 ${isLightMode ? '' : 'text-white'}`} />
                 justin.masiga.94@gmail.com
               </h6>
 
               <img
-                className="rotate position-absolute spinning-img-contact bg-white"
+              className={`rotate position-absolute spinning-img-contact  ${isLightMode ? '' : 'image-invert-grayscale'}`}
+                
                 src={image.spin}
                 alt=""
               />

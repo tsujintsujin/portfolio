@@ -1,8 +1,12 @@
 import React, { useEffect } from "react";
 
 import { image } from "../Files/image";
+import { useTheme } from '../Components/ThemeContext'; 
 
 export default function CmpAbout() {
+
+  const { isLightMode, lightModeToggle } = useTheme(); 
+
   useEffect(() => {
     const parallax = () => {
       const scrollTop =
@@ -31,7 +35,7 @@ export default function CmpAbout() {
         <div className="row">
           <div className="col-12 col-md-6 position-relative">
             <img
-              className="rotate position-absolute spinning-img  "
+              className={`rotate position-absolute spinning-img  ${isLightMode ? '' : 'image-invert-grayscale'}`}
               src={image.spin}
               alt=""
             />
@@ -42,22 +46,22 @@ export default function CmpAbout() {
             </div>
           </div>
           <div className="col-12 col-md-6 d-flex flex-column justify-content-center align-content-center">
-            <h5 className="fw-bold text-main mt-4 mt-lg-0 px-2 ">About Me</h5>
+            <h5 className="fw-bold text-main mt-4 mt-lg-0 px-2 ">Present Endeavor</h5>
             <hr />
 
-            <h4 className="fw-bold mb-2 text-muted  px-2 ">
+            <h4 className={`fw-bold mb-2  px-2 ${isLightMode ? 'text-dark' : ''}`}>
               {" "}
-              A dedicated Full Stack Web Developer.
+              Full Stack Web Developer.
             </h4>
+            <div className={`${isLightMode ? 'text-muted' : ''}`}>
             <h5 className="px-2">
-              I am a passionate Full Stack Web Developer specializing in HTML,
-              CSS, JavaScript, React, PHP, MySQL & Laravel. I excel in creating
-              responsive websites with smooth user experiences. My skills
-              include designing interactive interfaces using Figma and staying
-              up-to-date with the latest development tools. I am also proficient
-              in Adobe software such as Illustrator, Photoshop, and After
-              Effects for design purposes.
+              Currently working as a Business Analysis Developer for Tradynamics
             </h5>
+            <h5 className="px-2">
+              Focused on Vanilla Frontend with PHP and AWS Quicksight Technology. 
+            </h5>
+            </div>
+
           </div>
         </div>
       </div>

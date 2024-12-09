@@ -32,7 +32,8 @@ div {
 }
 
 a:hover {
-  color: rgba(164, 95, 38) !important;
+  color: rgb(219, 99, 0) !important;
+
 }
 .parallax-container {
   height: 100%;
@@ -52,16 +53,22 @@ a:hover {
   height: auto;
 }
 .text-main {
-  color: rgba(164, 95, 38);
+  color: rgb(219, 99, 0) !important;
+
 }
 .bg-main {
-  background-color: rgba(164, 95, 38);
+  background-color: rgb(219, 99, 0);
+  transition: 0.5s ease;
+
 }
 .border-rad-15 {
   border-radius: 15px;
 }
+.border-rad-50{
+  border-radius: 50%;
+}
 .space {
-  height: 30vh;
+  height: 20vh;
 }
 .vh-50 {
   height: 50vh;
@@ -84,7 +91,6 @@ a:hover {
 }
 .social-link {
   width: 45px !important;
-  filter: grayscale(100%) brightness(0%);
   cursor: pointer;
 }
 
@@ -97,7 +103,15 @@ a:hover {
 
 .project-image {
   width: 100%;
+  transition: transform 20s ease;
+
 }
+
+.project-image:hover {
+  transform: translateY(-75%); 
+}
+
+
 .bottom {
   filter: grayscale(100%) brightness(100000%);
 }
@@ -111,20 +125,23 @@ a:hover {
   height: 150px;
   top: -65px;
   left: -65px;
-  z-index: 1;
+  z-index: 0;
 }
 
 .spinning-img-contact{
   height: 50rem;
   top: 20%;
   left: 8%;
-  z-index: -10;
+  z-index: 0;
+
 }
 
 .nav-shadow {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-
+.nav-shadow-dark {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px;
+}
 .nav-link.active {
   font-weight: bold;
 }
@@ -140,6 +157,9 @@ a:hover {
   height: 70px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   border-radius: 50%;
+  background-color: white;
+  transition: 0.5s ease;
+
 }
 
 .popup-nav {
@@ -215,9 +235,19 @@ a:hover {
     text-align: center;
     color: #ffffff; /* Adjust the text color as needed */
   }
+  .img-light ,.img-light-bg{
+    margin-left: 0 !important;
+  }
+  .img-light{
+  transform: translate(-100%, -50%) !important;
+  }
+  .img-light-bg{
+    margin-left: 0 !important;
+  transform: translate(-114%, -59%) !important;
+  }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1100px) {
   .sm-exist{
     display: block !important;
   }
@@ -227,9 +257,15 @@ a:hover {
   .rotate {
     display: none;
   }
+
+  .img-light ,.img-light-bg{
+    margin-left: 0 !important;
+
+  }
 }
 
 @media only screen and (min-width: 1200px) {
+
 
 }
 
@@ -262,4 +298,60 @@ a:hover {
 .rotate {
   animation: rotation 30s infinite linear;
   border-radius: 50%;
+}
+
+
+#root{
+  background-color: #222222; /* Dark background */
+  color: #E0E0E0; /* Light text for contrast */
+  transition: 0.5s ease;
+}
+
+.image-invert-grayscale {
+  filter: invert(1) grayscale(100%);
+  z-index: 0;
+}
+
+
+.btn-white{
+  background-color: white !important;
+  transition: 0.5s ease;
+
+}
+
+.img-light {
+  height: 2.5rem; /* Or any height that suits your text size */
+  width: auto;
+  z-index: 1; /* Ensure the background appears behind the image */
+  position: absolute; /* Absolute positioning to place the background circle behind the image */
+  transform: translate(-50%, -50%);
+  margin-left: 2rem;
+  cursor: pointer !important;
+  transition: 0.5s ease;
+
+}
+
+.img-light-bg {
+  height: 2rem;
+  width: 2rem;
+  position: absolute; /* Absolute positioning to place the background circle behind the image */
+
+  border-radius: 50%; /* Circular shape */
+  z-index: -0; /* Ensure the background appears behind the image */
+  transform: translate(-50%, -59%);
+  background-color: rgb(255, 234, 114);
+  margin-left: 2rem;
+  filter: blur(10px); 
+  transition: 0.5s ease;
+  
+}
+
+.bg-night{
+  background-color: rgb(219, 219, 219);
+  transition: 0.5s ease;
+
+}
+
+.text-dark,.text-white,.bg-dark{
+  transition: 0.5s ease !important;
 }

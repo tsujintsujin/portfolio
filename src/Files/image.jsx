@@ -15,6 +15,8 @@ import spin from "./spin.svg";
 import demo from "./demo.svg";
 
 import mkdph from "./mkdph.png";
+import qs from "./qs.png";
+import turnkey from "./turnkey.png";
 import chodae from "./chodae.png";
 import weddii from "./weddii.png";
 import flow from "./Flow.png";
@@ -23,6 +25,10 @@ import about from "./about.jpg";
 import Par1 from "./Par1.png";
 import Par2 from "./Par2.png";
 import Par3 from "./Par3.png";
+
+import lightMode from "./light-mode.png";
+import darkMode from "./dark-mode.png";
+
 
 import cert from "./Cert.webp";
 
@@ -35,6 +41,10 @@ import figma from "./figma.svg";
 
 
 export const image = {
+  lightMode,
+darkMode,
+  qs,
+  turnkey,
   Par1,
 Par2,
 Par3,
