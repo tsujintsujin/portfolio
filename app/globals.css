@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: local("Space Grotesk"), url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700");
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.grid-texture {
+  background-image:
+    linear-gradient(#CBD2DC 1px, transparent 1px),
+    linear-gradient(90deg, #CBD2DC 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.35;
+}
+
+::selection {
+  background: #FF5A1F;
+  color: #FFFFFF;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(255, 90, 31, 0.3);
+}
