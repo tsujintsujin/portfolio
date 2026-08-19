@@ -1,9 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { toast } from "react-toastify";
+import { MotionConfig } from "framer-motion";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
@@ -15,15 +12,17 @@ import BuyMeCoffee from "@/components/BuyMeCoffee";
 
 export default function Home() {
   return (
-    <main className="overflow-hidden">
-      <Header />
-      <Hero />
-      <Experience />
-      <Projects />
-      <Stack />
-      <Contact />
-      <BuyMeCoffee />
-      <Footer />
-    </main>
+    <MotionConfig reducedMotion="user">
+      <main className="overflow-hidden">
+        <Header />
+        <Hero />
+        <Experience />
+        <Projects />
+        <Stack />
+        <Contact />
+        <BuyMeCoffee />
+        <Footer />
+      </main>
+    </MotionConfig>
   );
 }

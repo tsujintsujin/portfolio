@@ -40,7 +40,7 @@ export default function Experience() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.08,
         delayChildren: 0.2,
       },
     },
@@ -51,7 +51,7 @@ export default function Experience() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -62,15 +62,15 @@ export default function Experience() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col gap-4 pb-10 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-faint">
+            <div className="inline-flex items-center gap-2 font-body text-[0.8125rem] font-semibold uppercase tracking-[0.02em] text-faint">
               <span className="h-1.5 w-1.5 rounded-full bg-accent"></span>
-              experience.log
+              Where I&apos;ve worked
             </div>
-            <h2 className="mt-4 font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl">
+            <h2 className="mt-4 font-display text-[clamp(2rem,1.6rem+1.8vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-ink">
               Real work, not filler.
             </h2>
           </div>
@@ -85,31 +85,33 @@ export default function Experience() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 gap-4"
+          className="mt-10 space-y-5"
         >
           {experiences.map((exp, idx) => (
             <motion.article
               key={idx}
               variants={itemVariants}
-              className="grid grid-cols-1 gap-4 rounded-2xl border border-line bg-bg p-6 sm:grid-cols-[auto_1fr] sm:items-start sm:border-l-4 sm:border-l-accent"
+              className="grid grid-cols-1 gap-3 rounded-[1.25rem] border border-line border-l-4 border-l-accent-deep bg-bg p-6 sm:grid-cols-[160px_1fr] sm:gap-6"
             >
-              <p className="font-mono text-xs text-faint sm:w-28">{exp.date}</p>
+              <p className="font-mono text-xs tracking-[0.04em] text-faint">
+                {exp.date}
+              </p>
               <div>
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="font-display text-base font-medium text-ink">
+                  <h3 className="font-body text-[1.25rem] font-bold leading-[1.25] text-ink">
                     {exp.title}
                   </h3>
                   <span
-                    className={`rounded-full border px-2.5 py-0.5 font-mono text-[10px] tracking-[0.1em] ${
+                    className={`rounded-full px-2.5 py-0.5 font-body text-[0.6875rem] font-semibold ${
                       exp.status === "ACTIVE"
-                        ? "border-accent/30 bg-accent-soft text-accent-deep"
-                        : "border-line bg-surface text-muted"
+                        ? "bg-secondary-soft text-secondary-deep"
+                        : "bg-bg-alt text-muted"
                     }`}
                   >
-                    {exp.status}
+                    {exp.status === "ACTIVE" ? "Currently here" : "Wrapped up"}
                   </span>
                 </div>
-                <ul className="mt-3 space-y-1.5 text-sm text-muted">
+                <ul className="mt-3 space-y-1.5 text-[0.9375rem] leading-[1.65] text-muted">
                   {exp.items.map((item, i) => (
                     <li key={i}>• {item}</li>
                   ))}

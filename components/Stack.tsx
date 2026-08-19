@@ -36,7 +36,7 @@ export default function Stack() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.08,
         delayChildren: 0.2,
       },
     },
@@ -47,7 +47,7 @@ export default function Stack() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -58,13 +58,13 @@ export default function Stack() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-faint">
+          <div className="inline-flex items-center gap-2 font-body text-[0.8125rem] font-semibold uppercase tracking-[0.02em] text-faint">
             <span className="h-1.5 w-1.5 rounded-full bg-accent"></span>
-            capabilities.stack
+            Capabilities
           </div>
-          <h2 className="mt-4 font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl">
+          <h2 className="mt-4 font-display text-[clamp(2rem,1.6rem+1.8vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-ink">
             What I actually build.
           </h2>
         </motion.div>
@@ -81,16 +81,17 @@ export default function Stack() {
               key={idx}
               variants={itemVariants}
               whileHover={{ y: -4 }}
-              className={`rounded-2xl px-6 py-7 transition-all ${
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className={`rounded-2xl border px-6 py-7 transition-colors duration-200 ${
                 cap.highlight
-                  ? "border border-accent/30 bg-accent-soft"
-                  : "border border-line bg-bg hover:border-accent/30"
+                  ? "border-accent-deep/25 bg-accent-soft hover:shadow-[0_12px_28px_-14px_rgba(242,84,45,0.18)]"
+                  : "border-line bg-bg hover:border-accent-deep/30"
               } ${cap.span}`}
             >
-              <h3 className="font-display text-lg font-medium text-ink">
+              <h3 className="font-body text-[1.25rem] font-bold leading-[1.25] text-ink">
                 {cap.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
+              <p className="mt-2 text-[0.9375rem] leading-[1.65] text-muted">
                 {cap.description}
               </p>
             </motion.div>

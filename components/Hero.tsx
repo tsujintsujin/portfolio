@@ -16,7 +16,7 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.08,
         delayChildren: 0.1,
       },
     },
@@ -27,13 +27,14 @@ export default function Hero() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
   return (
     <section id="about" className="relative overflow-hidden">
-      <div className="grid-texture pointer-events-none absolute inset-0"></div>
+      <div className="texture-dots pointer-events-none absolute inset-0"></div>
+      <div className="hero-atmosphere"></div>
 
       <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-16 lg:px-12 lg:pb-24 lg:pt-20">
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-8">
@@ -44,27 +45,27 @@ export default function Hero() {
           >
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 font-mono text-[11px] tracking-[0.18em] text-faint"
+              className="inline-flex items-center gap-2 rounded-full border border-secondary-deep/30 bg-secondary-soft px-3 py-1.5 font-body text-[0.8125rem] font-semibold text-secondary-deep"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-accent motion-safe:animate-pulse"></span>
-              AVAILABLE FOR FREELANCE &amp; CONTRACT WORK
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary motion-safe:animate-pulse"></span>
+              Available for freelance &amp; contract work
             </motion.div>
 
             <motion.h1
               variants={itemVariants}
-              className="mt-6 font-display font-medium tracking-tight text-ink"
+              className="mt-6 font-display tracking-[-0.02em] text-ink"
             >
-              <span className="block text-[2.5rem] leading-[1.05] sm:text-[3.25rem] lg:text-[3.75rem]">
+              <span className="block text-[clamp(2.75rem,2rem+3.5vw,5.5rem)] font-black leading-[0.95]">
                 Justin Masiga
               </span>
-              <span className="mt-2 block text-xl leading-snug text-accent sm:text-2xl lg:text-[1.75rem]">
+              <span className="mt-3 block font-normal italic leading-[1.3] text-accent-deep text-[clamp(1.25rem,1rem+1vw,1.75rem)]">
                 Full-Stack Developer &amp; AI Operations Engineer
               </span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="mt-6 max-w-lg text-[17px] leading-relaxed text-muted"
+              className="mt-6 max-w-lg font-body text-[1.125rem] leading-[1.65] text-muted"
             >
               I build reporting dashboards, client tools, and automation pipelines
               so operations teams stop repeating themselves. Remote, based in the
@@ -75,34 +76,30 @@ export default function Hero() {
               variants={itemVariants}
               className="mt-9 flex flex-wrap items-center gap-4"
             >
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="focus-ring cursor-pointer rounded-full bg-accent-deep px-6 py-3 text-sm font-semibold text-white transition-opacity duration-[180ms] ease-out hover:opacity-90"
+              >
+                Start a project
+              </button>
               <a
                 href="mailto:justin.masiga.94@gmail.com"
-                className="cursor-pointer rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-deep"
+                className="focus-ring cursor-pointer rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition-colors duration-[180ms] ease-out hover:border-accent-deep/50 hover:text-accent-deep"
               >
-                Email me
+                Email directly
               </a>
-              <button
-                onClick={() => scrollToSection("experience")}
-                className="cursor-pointer rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-accent/50 hover:text-accent"
-              >
-                See experience
-              </button>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
               className="mt-10 flex items-center gap-4 border-t border-line pt-6"
             >
-              <p className="cursor-pointer font-mono text-[11px] tracking-[0.1em] text-faint transition-colors hover:text-accent">
-                justinmasiga.vercel.app
-              </p>
-              <span className="text-line">&middot;</span>
               <a
-                href="https://www.linkedin.com/in/justinmasiga"
+                href="https://www.linkedin.com/in/justin-m-992772236/"
                 target="_blank"
                 rel="noopener"
                 aria-label="LinkedIn"
-                className="cursor-pointer text-muted transition-colors hover:text-accent"
+                className="focus-ring cursor-pointer rounded-full text-muted transition-colors duration-[180ms] ease-out hover:text-accent-deep"
               >
                 <svg
                   width="16"
@@ -119,7 +116,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener"
                 aria-label="GitHub"
-                className="cursor-pointer text-muted transition-colors hover:text-accent"
+                className="focus-ring cursor-pointer rounded-full text-muted transition-colors duration-[180ms] ease-out hover:text-accent-deep"
               >
                 <svg
                   width="16"
@@ -134,11 +131,13 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-1">
+          <div className="relative grid grid-cols-2 gap-4 lg:grid-cols-1">
+            <div className="pointer-events-none absolute -inset-1 col-span-2 -z-10 -rotate-6 rounded-lg border-2 border-dashed border-accent-deep/40 lg:col-span-1"></div>
+
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-surface lg:aspect-[5/4]"
             >
               <Image
@@ -148,7 +147,7 @@ export default function Hero() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/95 px-3 py-1.5 font-mono text-[11px] text-muted backdrop-blur">
+              <div className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/95 px-3 py-1.5 font-mono text-xs tracking-[0.04em] text-muted backdrop-blur">
                 <svg
                   width="12"
                   height="12"
@@ -156,7 +155,7 @@ export default function Hero() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
-                  className="text-accent"
+                  className="text-accent-deep"
                   aria-hidden="true"
                 >
                   <path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" />
@@ -166,25 +165,19 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            <motion.div
+            <motion.dl
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="col-span-2 grid grid-cols-2 gap-3 rounded-2xl border border-line bg-surface p-4 lg:col-span-1"
+              transition={{ duration: 0.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="col-span-2 grid grid-cols-1 gap-3 rounded-2xl border border-line bg-surface p-4 lg:col-span-1"
             >
-              <div>
-                <dd className="font-mono text-lg font-medium text-ink">3+ yrs</dd>
-                <dd className="mt-1 text-[11px] leading-tight text-faint">
+              <div className="flex flex-col-reverse">
+                <dt className="mt-1 text-[11px] leading-tight text-faint">
                   Remote dev &amp; support
-                </dd>
+                </dt>
+                <dd className="font-mono text-lg font-bold text-ink">3+ yrs</dd>
               </div>
-              <div>
-                <dd className="font-mono text-lg font-medium text-ink">2018</dd>
-                <dd className="mt-1 text-[11px] leading-tight text-faint">
-                  B.S. Comp. Science
-                </dd>
-              </div>
-            </motion.div>
+            </motion.dl>
           </div>
         </div>
       </div>
