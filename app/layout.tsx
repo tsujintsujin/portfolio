@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import { fraunces, figtree, spaceMono } from "./fonts";
+import Toaster from "@/components/Toaster";
 
 export const metadata: Metadata = {
   title: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
@@ -66,18 +66,7 @@ export default function RootLayout({
       </head>
       <body className="bg-bg text-ink font-body antialiased">
         {children}
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+        <Toaster />
       </body>
     </html>
   );
