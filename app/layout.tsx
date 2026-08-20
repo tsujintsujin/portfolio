@@ -63,6 +63,34 @@ export default function RootLayout({
             }),
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function() {
+              try {
+                if ('scrollRestoration' in history) {
+                  history.scrollRestoration = 'manual';
+                }
+                var KEY = 'scrollY';
+                window.addEventListener('load', function() {
+                  var saved = sessionStorage.getItem(KEY);
+                  if (saved !== null) {
+                    var root = document.documentElement;
+                    var prev = root.style.scrollBehavior;
+                    root.style.scrollBehavior = 'auto';
+                    window.scrollTo(0, parseInt(saved, 10) || 0);
+                    root.style.scrollBehavior = prev;
+                  }
+                });
+                var save = function() {
+                  try { sessionStorage.setItem(KEY, String(window.scrollY)); } catch (e) {}
+                };
+                window.addEventListener('scroll', save, { passive: true });
+                window.addEventListener('pagehide', save);
+                window.addEventListener('beforeunload', save);
+              } catch (e) {}
+            })();`,
+          }}
+        />
       </head>
       <body className="bg-bg text-ink font-body antialiased">
         {children}
