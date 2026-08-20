@@ -71,14 +71,26 @@ export default function RootLayout({
                   history.scrollRestoration = 'manual';
                 }
                 var KEY = 'scrollY';
+                var isReload = false;
+                try {
+                  var nav = performance.getEntriesByType('navigation')[0];
+                  isReload = nav
+                    ? nav.type === 'reload'
+                    : !!(performance.navigation && performance.navigation.type === 1);
+                } catch (e) {}
+
                 window.addEventListener('load', function() {
-                  var saved = sessionStorage.getItem(KEY);
-                  if (saved !== null) {
-                    var root = document.documentElement;
-                    var prev = root.style.scrollBehavior;
-                    root.style.scrollBehavior = 'auto';
-                    window.scrollTo(0, parseInt(saved, 10) || 0);
-                    root.style.scrollBehavior = prev;
+                  if (isReload) {
+                    var saved = sessionStorage.getItem(KEY);
+                    if (saved !== null) {
+                      var root = document.documentElement;
+                      var prev = root.style.scrollBehavior;
+                      root.style.scrollBehavior = 'auto';
+                      window.scrollTo(0, parseInt(saved, 10) || 0);
+                      root.style.scrollBehavior = prev;
+                    }
+                  } else {
+                    sessionStorage.removeItem(KEY);
                   }
                 });
                 var save = function() {
