@@ -43,7 +43,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="sticky top-4 z-50 mx-4">
+    <div className="relative z-50 mx-4 mt-4">
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

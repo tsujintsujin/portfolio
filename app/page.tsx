@@ -2,6 +2,7 @@
 
 import { MotionConfig } from "framer-motion";
 import Header from "@/components/Header";
+import SideNav from "@/components/SideNav";
 import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
@@ -15,6 +16,7 @@ export default function Home() {
     <MotionConfig reducedMotion="user">
       <main className="overflow-hidden">
         <Header />
+        <SideNav />
         <Hero />
         <Experience />
         <Projects />
