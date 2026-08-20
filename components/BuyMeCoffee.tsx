@@ -32,6 +32,7 @@ export default function BuyMeCoffee() {
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+  const hasOpenedRef = useRef(false);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -72,7 +73,9 @@ export default function BuyMeCoffee() {
   }, [isOpen]);
 
   useEffect(() => {
-    if (!isOpen) {
+    if (isOpen) {
+      hasOpenedRef.current = true;
+    } else if (hasOpenedRef.current) {
       triggerRef.current?.focus();
     }
   }, [isOpen]);
