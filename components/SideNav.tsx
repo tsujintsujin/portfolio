@@ -74,27 +74,41 @@ export default function SideNav() {
           exit={{ opacity: 0, x: -12 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
           aria-label="Section navigation"
-          className="fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-1 rounded-2xl border border-line bg-surface/90 p-2 shadow-[0_1px_2px_rgba(43,33,24,0.04),0_8px_24px_-12px_rgba(43,33,24,0.12)] backdrop-blur lg:flex"
+          className="fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block"
         >
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              aria-current={activeId === item.id ? "true" : undefined}
-              className={`focus-ring flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.02em] transition-colors duration-150 ease-out ${
-                activeId === item.id
-                  ? "bg-accent-soft text-accent-deep"
-                  : "text-muted hover:text-ink"
-              }`}
-            >
-              <span
-                className={`h-1.5 w-1.5 shrink-0 rounded-full transition-colors duration-150 ease-out ${
-                  activeId === item.id ? "bg-accent-deep" : "bg-line"
-                }`}
-              />
-              {item.label}
-            </button>
-          ))}
+          <ul className="relative flex flex-col border-l border-line pl-5">
+            {NAV_ITEMS.map((item) => {
+              const isActive = activeId === item.id;
+              return (
+                <li key={item.id} className="relative">
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`focus-ring group relative flex min-h-10 w-full cursor-pointer items-center py-1 pr-3 text-left font-display text-[0.9375rem] transition-colors duration-200 ease-out ${
+                      isActive
+                        ? "font-semibold italic text-accent-deep"
+                        : "text-faint hover:text-ink"
+                    }`}
+                  >
+                    {isActive ? (
+                      <motion.span
+                        layoutId="sideNavActiveTick"
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        aria-hidden="true"
+                        className="absolute -left-5 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-full bg-accent-deep"
+                      />
+                    ) : (
+                      <span
+                        aria-hidden="true"
+                        className="absolute -left-5 top-1/2 h-1.5 w-[3px] -translate-y-1/2 rounded-full bg-line transition-all duration-200 ease-out group-hover:h-2.5 group-hover:bg-faint"
+                      />
+                    )}
+                    {item.label}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
         </motion.nav>
       )}
     </AnimatePresence>
