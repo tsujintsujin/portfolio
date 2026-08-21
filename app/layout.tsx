@@ -5,23 +5,26 @@ import { fraunces, figtree, spaceMono } from "./fonts";
 import Toaster from "@/components/Toaster";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://justin94.space"),
   title: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
   description:
     "Justin Masiga, full-stack developer and AI operations engineer building dashboards, client tools, and automation pipelines. Based in Davao de Oro, Philippines.",
   robots: "index, follow",
-  alternates: { canonical: "https://justinmasiga.vercel.app/" },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     title: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
     description:
       "Full-stack developer and AI operations engineer building dashboards, client tools, and automation pipelines. Based in Davao de Oro, Philippines.",
-    url: "https://justinmasiga.vercel.app/",
+    url: "/",
+    images: ["/JustinM.jpg"],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
     description:
       "Full-stack developer and AI operations engineer building dashboards, client tools, and automation pipelines.",
+    images: ["/JustinM.jpg"],
   },
 };
 
@@ -49,7 +52,7 @@ export default function RootLayout({
               "@type": "Person",
               name: "Justin Masiga",
               jobTitle: "Full-Stack Developer & AI Operations Engineer",
-              url: "https://justinmasiga.vercel.app",
+              url: "https://justin94.space",
               email: "mailto:justin.masiga.94@gmail.com",
               address: {
                 "@type": "PostalAddress",

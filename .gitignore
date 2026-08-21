@@ -37,3 +37,10 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# repomix
+repomix-output.xml
+# Added by code-review-graph
+.code-review-graph/
+# Added by graphify
+graphify-out/

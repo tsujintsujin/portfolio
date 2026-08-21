@@ -7,7 +7,7 @@ export default function Hero() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
 
@@ -134,12 +134,7 @@ export default function Hero() {
           <div className="relative grid grid-cols-2 gap-4 lg:grid-cols-1">
             <div className="pointer-events-none absolute -inset-1 col-span-2 -z-10 -rotate-6 rounded-lg border-2 border-dashed border-accent-deep/40 lg:col-span-1"></div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-surface lg:aspect-[5/4]"
-            >
+            <div className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-surface lg:aspect-[5/4]">
               <Image
                 src="/JustinM.jpg"
                 alt="Justin Masiga portrait"
@@ -163,7 +158,7 @@ export default function Hero() {
                 </svg>
                 Davao de Oro, PH
               </div>
-            </motion.div>
+            </div>
 
             <motion.dl
               initial={{ opacity: 0, y: 20 }}
