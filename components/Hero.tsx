@@ -139,6 +139,7 @@ export default function Hero() {
                 src="/JustinM.jpg"
                 alt="Justin Masiga portrait"
                 fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
                 className="object-cover"
                 priority
               />

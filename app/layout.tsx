@@ -49,19 +49,51 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Justin Masiga",
-              jobTitle: "Full-Stack Developer & AI Operations Engineer",
-              url: "https://justin94.space",
-              email: "mailto:justin.masiga.94@gmail.com",
-              address: {
-                "@type": "PostalAddress",
-                addressRegion: "Davao de Oro",
-                addressCountry: "PH",
-              },
-              sameAs: [
-                "https://github.com/tsujintsujin",
-                "https://www.linkedin.com/in/justinmasiga",
+              "@graph": [
+                {
+                  "@type": "Person",
+                  "@id": "https://justin94.space/#person",
+                  name: "Justin Masiga",
+                  jobTitle: "Full-Stack Developer & AI Operations Engineer",
+                  url: "https://justin94.space/",
+                  image: "https://justin94.space/JustinM.jpg",
+                  email: "mailto:justin.masiga.94@gmail.com",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressRegion: "Davao de Oro",
+                    addressCountry: "PH",
+                  },
+                  sameAs: [
+                    "https://github.com/tsujintsujin",
+                    "https://www.linkedin.com/in/justin-m-992772236/",
+                  ],
+                  knowsAbout: [
+                    "Full-Stack Web Development",
+                    "Next.js",
+                    "AI Automation & Operations",
+                    "n8n Workflow Automation",
+                    "Amazon QuickSight",
+                    "Dashboard Engineering",
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://justin94.space/#website",
+                  url: "https://justin94.space/",
+                  name: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
+                  description:
+                    "Justin Masiga, full-stack developer and AI operations engineer building dashboards, client tools, and automation pipelines. Based in Davao de Oro, Philippines.",
+                  publisher: { "@id": "https://justin94.space/#person" },
+                  inLanguage: "en",
+                },
+                {
+                  "@type": "ProfilePage",
+                  "@id": "https://justin94.space/#profilepage",
+                  url: "https://justin94.space/",
+                  name: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
+                  isPartOf: { "@id": "https://justin94.space/#website" },
+                  mainEntity: { "@id": "https://justin94.space/#person" },
+                },
               ],
             }),
           }}
