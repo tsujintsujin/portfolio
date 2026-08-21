@@ -17,7 +17,14 @@ export default function Header() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      if (id === "experience" || id === "projects") {
+        const rect = element.getBoundingClientRect();
+        const targetY =
+          window.scrollY + rect.top - (window.innerHeight - rect.height) / 2 + 10;
+        window.scrollTo({ top: targetY, behavior: "smooth" });
+      } else {
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
     setMenuOpen(false);
   };

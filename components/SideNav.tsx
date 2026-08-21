@@ -16,7 +16,16 @@ export default function SideNav() {
   const [pastContact, setPastContact] = useState(false);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const element = document.getElementById(id);
+    if (!element) return;
+    if (id === "experience" || id === "projects") {
+      const rect = element.getBoundingClientRect();
+      const targetY =
+        window.scrollY + rect.top - (window.innerHeight - rect.height) / 2 + 10;
+      window.scrollTo({ top: targetY, behavior: "smooth" });
+    } else {
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
   };
 
   useEffect(() => {
@@ -95,7 +104,7 @@ export default function SideNav() {
                         layoutId="sideNavActiveTick"
                         transition={{ duration: 0.2, ease: "easeOut" }}
                         aria-hidden="true"
-                        className="absolute -left-5 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-full bg-accent-deep"
+                        className="absolute -left-5 inset-y-0 my-auto h-5 w-[3px] rounded-full bg-accent-deep"
                       />
                     ) : (
                       <span
