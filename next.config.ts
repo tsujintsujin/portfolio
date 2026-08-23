@@ -1,6 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/dashboard",
+        destination: "https://justinmasiga-dashboard.vercel.app/dashboard",
+      },
+      {
+        source: "/dashboard/:path*",
+        destination: "https://justinmasiga-dashboard.vercel.app/dashboard/:path*",
+      },
+    ];
+  },
   async headers() {
     return [
       {
