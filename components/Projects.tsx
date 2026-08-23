@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    title: "Automation Pipeline",
-    description: "Full write-up coming soon.",
-    techs: ["N8N", "FASTAPI", "SUPABASE"],
-    status: "COMING SOON",
+    title: "Culinary Symphony",
+    description: "Restaurant site — menu, about, and contact.",
+    techs: ["NEXT.JS", "TAILWIND", "TYPESCRIPT"],
+    status: "LIVE",
+    href: "/culinary-symphony",
     featured: true,
   },
   {
@@ -96,7 +97,8 @@ export default function Projects() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 gap-5 lg:grid-cols-[2fr_1fr]"
         >
-          <motion.article
+          <motion.a
+            href={featured.href}
             variants={itemVariants}
             whileHover={{ y: -6, rotate: -1 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
@@ -123,7 +125,7 @@ export default function Projects() {
                 </p>
               </div>
             </div>
-          </motion.article>
+          </motion.a>
 
           <div className="grid grid-cols-1 gap-5 lg:grid-rows-2">
             {rest.map((project, idx) => (

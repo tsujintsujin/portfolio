@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
         source: "/dashboard/:path*",
         destination: "https://justinmasiga-dashboard.vercel.app/dashboard/:path*",
       },
+      {
+        source: "/culinary-symphony",
+        destination: "https://culinary-symphony.vercel.app/culinary-symphony",
+      },
+      {
+        source: "/culinary-symphony/:path*",
+        destination: "https://culinary-symphony.vercel.app/culinary-symphony/:path*",
+      },
     ];
   },
   async headers() {
