@@ -27,6 +27,14 @@ const nextConfig: NextConfig = {
         source: "/justinandjecery/:path*",
         destination: "https://justinandjecery.vercel.app/justinandjecery/:path*",
       },
+      {
+        source: "/pos-system",
+        destination: "https://pos-system-ruddy-eight.vercel.app/pos-system",
+      },
+      {
+        source: "/pos-system/:path*",
+        destination: "https://pos-system-ruddy-eight.vercel.app/pos-system/:path*",
+      },
     ];
   },
   async headers() {
