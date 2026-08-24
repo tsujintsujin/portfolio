@@ -6,6 +6,11 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
+body.custom-cursor-active,
+body.custom-cursor-active * {
+  cursor: none !important;
+}
+
 .texture-dots {
   background-image: radial-gradient(#E8DFD0 1px, transparent 1px);
   background-size: 24px 24px;

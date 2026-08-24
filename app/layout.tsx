@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import { fraunces, figtree, spaceMono } from "./fonts";
 import Toaster from "@/components/Toaster";
+import CustomCursor from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://justin94.space"),
@@ -137,6 +138,7 @@ export default function RootLayout({
       <body className="bg-bg text-ink font-body antialiased">
         {children}
         <Toaster />
+        <CustomCursor />
       </body>
     </html>
   );
