@@ -62,7 +62,22 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/((?!dashboard).*)",
+        // Product/receipt-logo images are arbitrary admin-entered HTTPS URLs (no fixed
+        // host — see pos-system/app/(catalog)/products/[id]/page.tsx), so img-src needs
+        // https: broadly, same reasoning as the Dashboard block above.
+        source: "/pos-system/:path*",
+        headers: [
+          ...baseHeaders,
+          {
+            key: "Content-Security-Policy",
+            value: `default-src 'self'; script-src 'self' 'unsafe-inline'${
+              process.env.NODE_ENV !== "production" ? " 'unsafe-eval'" : ""
+            }; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none';`,
+          },
+        ],
+      },
+      {
+        source: "/((?!dashboard|pos-system).*)",
         headers: [
           ...baseHeaders,
           {
