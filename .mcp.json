@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "code-review-graph": {
+      "command": "C:\\Users\\justi\\.local\\bin\\code-review-graph.exe",
+      "args": [
+        "serve"
+      ],
+      "cwd": "D:\\AIO Freelance\\Portfolio",
+      "type": "stdio"
+    }
+  }
+}

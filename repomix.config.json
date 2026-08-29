@@ -1,0 +1,17 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml",
+    "compress": true,
+    "removeComments": false,
+    "removeEmptyLines": false,
+    "topFilesLength": 10
+  },
+  "include": [],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": ["node_modules/**", ".next/**", "repomix-output.xml"]
+  }
+}

@@ -1,8 +1,0 @@
-[ARCHITECTURAL PREFERENCES]
-Frontend: Next.js (App Router), Tailwind CSS, TypeScript.
-Backend/APIs: Python, FastAPI, Node.js (Fastify).
-AI/Agent Frameworks: CrewAI, n8n (visual workflows), LangGraph.
-Databases: Supabase (PostgreSQL), Vector DBs (Pinecone, Qdrant).
-Hosting: Vercel (Frontend), Supabase/Render (Backend/Database).
-Payments: PayMongo or Xendit (GCash, Maya, GoTyme, Visa/Mastercard) for PH-based transactions.
-Email: Resend (transactional emails — form notifications, order confirmations).

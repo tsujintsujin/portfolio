@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import { fraunces, figtree, spaceMono } from "./fonts";
-import Toaster from "@/components/Toaster";
-import CustomCursor from "@/components/CustomCursor";
+import Toaster from "@/components/ui/Toaster";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://justin94.space"),
@@ -18,14 +18,14 @@ export const metadata: Metadata = {
     description:
       "Full-stack developer and AI operations engineer building dashboards, client tools, and automation pipelines. Based in Davao de Oro, Philippines.",
     url: "/",
-    images: ["/JustinM.jpg"],
+    images: ["/og-image.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
     description:
       "Full-stack developer and AI operations engineer building dashboards, client tools, and automation pipelines.",
-    images: ["/JustinM.jpg"],
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -52,7 +52,7 @@ export default function RootLayout({
                   name: "Justin Masiga",
                   jobTitle: "Full-Stack Developer & AI Operations Engineer",
                   url: "https://justin94.space/",
-                  image: "https://justin94.space/JustinM.jpg",
+                  image: "https://justin94.space/justin-masiga.webp",
                   email: "mailto:justin.masiga.94@gmail.com",
                   address: {
                     "@type": "PostalAddress",

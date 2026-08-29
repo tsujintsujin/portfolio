@@ -134,9 +134,9 @@ export default function Hero() {
           <div className="relative grid grid-cols-2 gap-4 lg:grid-cols-1">
             <div className="pointer-events-none absolute -inset-1 col-span-2 -z-10 -rotate-6 rounded-lg border-2 border-dashed border-accent-deep/40 lg:col-span-1"></div>
 
-            <div className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-surface lg:aspect-[5/4]">
+            <div className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-surface lg:col-span-1 lg:aspect-[5/4]">
               <Image
-                src="/JustinM.jpg"
+                src="/justin-masiga.webp"
                 alt="Justin Masiga portrait"
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"
@@ -165,13 +165,23 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="col-span-2 grid grid-cols-1 gap-3 rounded-2xl border border-line bg-surface p-4 lg:col-span-1"
+              className="col-span-2 grid grid-cols-2 gap-5 rounded-2xl border border-line bg-surface p-5 lg:col-span-1"
             >
-              <div className="flex flex-col-reverse">
-                <dt className="mt-1 text-[11px] leading-tight text-faint">
-                  Remote dev &amp; support
+              <div className="flex flex-col gap-1.5 border-r border-line pr-5">
+                <dd className="font-mono text-[1.75rem] font-bold leading-none text-ink">
+                  3+
+                </dd>
+                <dt className="text-[11px] leading-snug text-faint">
+                  years remote dev &amp; support
                 </dt>
-                <dd className="font-mono text-lg font-bold text-ink">3+ yrs</dd>
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <dd className="font-mono text-[1.75rem] font-bold leading-none text-ink">
+                  2+
+                </dd>
+                <dt className="text-[11px] leading-snug text-faint">
+                  years graphic design
+                </dt>
               </div>
             </motion.dl>
           </div>

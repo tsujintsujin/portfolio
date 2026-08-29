@@ -44,3 +44,13 @@ repomix-output.xml
 .code-review-graph/
 # Added by graphify
 graphify-out/
+
+# local agent settings (contains the Discord webhook URL — never commit)
+.claude/settings.local.json
+
+# editor/tool backups
+*.bak
+*.graphify-bak
+
+# generated audit output (large screenshots, regenerable)
+/docs/audit/
