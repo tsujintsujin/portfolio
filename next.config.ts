@@ -35,6 +35,14 @@ const nextConfig: NextConfig = {
         source: "/pos-system/:path*",
         destination: "https://pos-system-ruddy-eight.vercel.app/pos-system/:path*",
       },
+      {
+        source: "/surge",
+        destination: "https://surge-tsujintsujins-projects.vercel.app/surge",
+      },
+      {
+        source: "/surge/:path*",
+        destination: "https://surge-tsujintsujins-projects.vercel.app/surge/:path*",
+      },
     ];
   },
   async headers() {
@@ -77,7 +85,22 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/((?!dashboard|pos-system).*)",
+        // The Surge pitch embeds Google Maps on the contact page and all 14
+        // training-centre pages. The catch-all CSP below sets no frame-src, so it
+        // falls back to default-src 'self' and those iframes are blocked.
+        source: "/surge/:path*",
+        headers: [
+          ...baseHeaders,
+          {
+            key: "Content-Security-Policy",
+            value: `default-src 'self'; script-src 'self' 'unsafe-inline'${
+              process.env.NODE_ENV !== "production" ? " 'unsafe-eval'" : ""
+            }; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-src https://maps.google.com https://www.google.com; frame-ancestors 'none';`,
+          },
+        ],
+      },
+      {
+        source: "/((?!dashboard|pos-system|surge).*)",
         headers: [
           ...baseHeaders,
           {
