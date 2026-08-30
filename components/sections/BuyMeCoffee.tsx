@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { toast } from "react-toastify";
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
@@ -80,14 +80,6 @@ export default function BuyMeCoffee() {
     }
   }, [isOpen]);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText("09760994238");
-    toast.success("GCash number copied to clipboard!", {
-      position: "bottom-right",
-      autoClose: 3000,
-    });
-  };
-
   return (
     <section className="relative border-t border-line bg-surface">
       <div className="mx-auto max-w-6xl px-6 py-12 lg:px-12 lg:py-16">
@@ -106,7 +98,7 @@ export default function BuyMeCoffee() {
             Buy me a coffee
           </h3>
           <p className="mt-2 text-sm text-muted">
-            Help fuel development with a coffee (₱60 PHP via GCash)
+            Help fuel development — scan the QR to send a coffee.
           </p>
 
           <motion.button
@@ -118,7 +110,7 @@ export default function BuyMeCoffee() {
             className="focus-ring mt-6 inline-flex items-center gap-2 rounded-full bg-accent-deep px-6 py-3 text-sm font-semibold text-white transition-opacity duration-[180ms] ease-out hover:opacity-90"
           >
             <CoffeeIcon className="text-white" />
-            Support with GCash
+            Scan to support
           </motion.button>
         </motion.div>
       </div>
@@ -146,7 +138,7 @@ export default function BuyMeCoffee() {
             >
               <div className="text-center">
                 <p className="mb-4 font-body text-[0.8125rem] font-semibold uppercase tracking-[0.02em] text-faint">
-                  GCash payment
+                  Scan to pay
                 </p>
                 <h3
                   id="coffee-modal-title"
@@ -156,27 +148,20 @@ export default function BuyMeCoffee() {
                   Buy Me A Coffee
                 </h3>
 
-                <div className="my-8 rounded-2xl border border-line bg-bg p-6">
-                  <p className="mb-3 text-sm text-faint">Amount:</p>
-                  <p className="font-mono text-3xl font-bold text-accent-deep">
-                    ₱60 PHP
-                  </p>
-                </div>
-
-                <div className="my-8 rounded-2xl border border-accent-deep/30 bg-accent-soft p-6">
-                  <p className="mb-2 text-xs text-faint">GCash Number:</p>
-                  <p className="font-mono text-lg font-bold text-ink">
-                    09760994238
-                  </p>
-                  <button
-                    onClick={handleCopy}
-                    className="focus-ring mt-3 w-full cursor-pointer rounded-xl bg-accent-deep px-4 py-2 text-sm font-semibold text-white transition-opacity duration-[180ms] ease-out hover:opacity-90"
-                  >
-                    Copy Number
-                  </button>
+                <div className="my-8 overflow-hidden rounded-2xl border border-line bg-bg p-4">
+                  <Image
+                    src="/support-qr.png"
+                    alt="QR code for sending a coffee donation to Justin Masiga"
+                    width={320}
+                    height={320}
+                    sizes="(max-width: 640px) 80vw, 320px"
+                    className="h-auto w-full rounded-xl"
+                    priority
+                  />
                 </div>
 
                 <p className="mb-6 text-sm text-muted">
+                  Scan with your banking or e-wallet app to send any amount.
                   Thanks for keeping this project running.
                 </p>
 
