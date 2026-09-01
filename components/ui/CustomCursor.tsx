@@ -8,7 +8,8 @@ const CURSOR_PATH =
 const TIP_X = 156.295;
 const TIP_Y = 2.228;
 const SCALE = 0.14;
-const WEIGHT = 0.35;
+// 1 = the head sits exactly on the pointer; lower values let it trail behind.
+const WEIGHT = 1;
 
 function lerpAngle(a: number, b: number, t: number) {
   let diff = (b - a) % 360;
