@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    date: "June 2023 - Present",
+    date: "June 2023 - Sept 2026",
     title: "Trade Dynamics - Associate Developer (Remote)",
-    status: "ACTIVE",
+    status: "COMPLETE",
     items: [
       "Develop standardized client form reports and reporting logic through code-based reporting.",
       "Build and maintain Amazon QuickSight dashboards used directly by clients for decision-making.",
@@ -75,8 +75,8 @@ export default function Experience() {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-muted">
-            The verified record. Project case studies live in the section below
-            and fill in as builds ship.
+            The verified record. Project case studies live in the section
+            below.
           </p>
         </motion.div>
 
