@@ -17,7 +17,7 @@ export default function Header() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      if (id === "experience" || id === "projects") {
+      if (id === "experience") {
         const rect = element.getBoundingClientRect();
         const targetY =
           window.scrollY + rect.top - (window.innerHeight - rect.height) / 2 + 10;

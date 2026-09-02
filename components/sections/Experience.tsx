@@ -8,8 +8,8 @@ const experiences = [
     title: "Trade Dynamics - Associate Developer (Remote)",
     status: "COMPLETE",
     items: [
-      "Develop standardized client form reports and reporting logic through code-based reporting.",
-      "Build and maintain Amazon QuickSight dashboards used directly by clients for decision-making.",
+      "Developed client specific financial reports and reporting logic through code-based reporting.",
+      "Built and maintain Amazon QuickSight dashboards used directly by clients for business decision-making.",
       "Built the UI for conzuma.tradynamics.com and contributed to a Next.js + NestJS AI-assisted report generator.",
     ],
   },
@@ -18,7 +18,7 @@ const experiences = [
     title: "All About You Skin Clinic (Australia) - General Virtual Assistant",
     status: "COMPLETE",
     items: [
-      "Managed 30+ client inquiries daily across email and social media.",
+      "Managed 20+ client inquiries daily across email and social media.",
       "Tracked requests and follow-ups to keep client experience consistent.",
       "Proofread 35+ pages of manuals and SOPs for clarity.",
     ],
@@ -29,6 +29,7 @@ const experiences = [
     status: "COMPLETE",
     items: [
       "Delivered high-volume design output under strict deadlines and QC.",
+      "Daily usage of Adobe Illustrator and Photoshop.",
       "Coordinated across teams to resolve issues fast and prevent rework.",
     ],
   },
@@ -74,10 +75,7 @@ export default function Experience() {
               Real work, not filler.
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-muted">
-            The verified record. Project case studies live in the section
-            below.
-          </p>
+    
         </motion.div>
 
         <motion.div

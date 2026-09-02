@@ -67,9 +67,12 @@ export default function Hero() {
               variants={itemVariants}
               className="mt-6 max-w-lg font-body text-[1.125rem] leading-[1.65] text-muted"
             >
-              I build reporting dashboards, client tools, and automation pipelines
+              I build full stack websites, client tools, and automation pipelines
               so operations teams stop repeating themselves. Remote, based in the
-              Philippines.
+              Philippines. 
+              <br className="hidden sm:inline" />
+              <br className="hidden sm:inline" />
+              Open for relocation.
             </motion.p>
 
             <motion.div

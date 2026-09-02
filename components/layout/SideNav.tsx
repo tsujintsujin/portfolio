@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// scrollOffset shifts the centered target up (positive) or down (negative) by px.
+// Omit it to just center the section normally.
 const NAV_ITEMS = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
+  { id: "about", label: "About", scrollOffset: 0 },
+  { id: "experience", label: "Experience", scrollOffset: -20 },
+  { id: "projects", label: "Projects", scrollOffset: 680 },
+  { id: "contact", label: "Contact", scrollOffset: 0 },
 ];
 
 export default function SideNav() {
@@ -18,14 +20,11 @@ export default function SideNav() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (!element) return;
-    if (id === "experience" || id === "projects") {
-      const rect = element.getBoundingClientRect();
-      const targetY =
-        window.scrollY + rect.top - (window.innerHeight - rect.height) / 2 + 10;
-      window.scrollTo({ top: targetY, behavior: "smooth" });
-    } else {
-      element.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    const scrollOffset = NAV_ITEMS.find((item) => item.id === id)?.scrollOffset ?? 0;
+    const rect = element.getBoundingClientRect();
+    const targetY =
+      window.scrollY + rect.top - (window.innerHeight - rect.height) / 2 - scrollOffset;
+    window.scrollTo({ top: targetY, behavior: "smooth" });
   };
 
   useEffect(() => {
