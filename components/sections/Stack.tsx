@@ -65,7 +65,7 @@ export default function Stack() {
             Capabilities
           </div>
           <h2 className="mt-4 font-display text-[clamp(2rem,1.6rem+1.8vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-ink">
-            What I actually build.
+            Currently working on.
           </h2>
         </motion.div>
 

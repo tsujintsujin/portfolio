@@ -9,8 +9,8 @@ const experiences = [
     status: "COMPLETE",
     items: [
       "Developed client specific financial reports and reporting logic through code-based reporting.",
-      "Built and maintain Amazon QuickSight dashboards used directly by clients for business decision-making.",
-      "Built the UI for conzuma.tradynamics.com and contributed to a Next.js + NestJS AI-assisted report generator.",
+      "Built Amazon QuickSight dashboards used directly by clients for business decision-making.",
+      "Maintained database and ETL pipelines for client data, ensuring data integrity and accuracy.",
     ],
   },
   {
@@ -18,9 +18,8 @@ const experiences = [
     title: "All About You Skin Clinic (Australia) - General Virtual Assistant",
     status: "COMPLETE",
     items: [
-      "Managed 20+ client inquiries daily across email and social media.",
-      "Tracked requests and follow-ups to keep client experience consistent.",
-      "Proofread 35+ pages of manuals and SOPs for clarity.",
+      "Managed heavy client inquiries daily across email and social media platform messages.",
+      "Managed emails and tracked requests and follow-ups to keep client experience consistent.",
     ],
   },
   {
@@ -28,8 +27,8 @@ const experiences = [
     title: "Pencil Learning Technologies (Singapore) - Graphic Artist",
     status: "COMPLETE",
     items: [
-      "Delivered high-volume design output under strict deadlines and QC.",
-      "Daily usage of Adobe Illustrator and Photoshop.",
+      "Delivered high-volume design output daily under strict deadlines and quotas.",
+      "Everyday use of design tools such as Adobe Illustrator and Photoshop.",
       "Coordinated across teams to resolve issues fast and prevent rework.",
     ],
   },

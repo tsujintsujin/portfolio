@@ -90,6 +90,7 @@ export default function CustomCursor() {
 
   return (
     <svg
+      className="custom-cursor"
       width="100%"
       height="100%"
       style={{
