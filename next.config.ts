@@ -43,6 +43,15 @@ const nextConfig: NextConfig = {
         source: "/surge/:path*",
         destination: "https://surge-tsujintsujins-projects.vercel.app/surge/:path*",
       },
+      {
+        // Aqua pitch build runs on Cloudflare Workers (basePath /aqua), not Vercel.
+        source: "/aqua",
+        destination: "https://aqua.justin-masiga-94.workers.dev/aqua",
+      },
+      {
+        source: "/aqua/:path*",
+        destination: "https://aqua.justin-masiga-94.workers.dev/aqua/:path*",
+      },
     ];
   },
   async headers() {
@@ -100,7 +109,22 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/((?!dashboard|pos-system|surge).*)",
+        // Aqua: menu photos come from Cloudinary and customer avatars from Google
+        // (img-src https:), and Google sign-in loads its script, stylesheet and
+        // button iframe from accounts.google.com.
+        source: "/aqua/:path*",
+        headers: [
+          ...baseHeaders,
+          {
+            key: "Content-Security-Policy",
+            value: `default-src 'self'; script-src 'self' 'unsafe-inline' https://accounts.google.com${
+              process.env.NODE_ENV !== "production" ? " 'unsafe-eval'" : ""
+            }; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://accounts.google.com; frame-src https://accounts.google.com; frame-ancestors 'none';`,
+          },
+        ],
+      },
+      {
+        source: "/((?!dashboard|pos-system|surge|aqua).*)",
         headers: [
           ...baseHeaders,
           {
