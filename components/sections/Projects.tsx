@@ -104,7 +104,7 @@ const projects: Project[] = [
   {
     title: "wedd.space",
     cta: "Open wedd.space",
-    kicker: "Own product - SaaS",
+    kicker: "Own product",
     status: "LIVE",
     summary:
       "A online wedding presence for couples. Gallery, their story, the schedule, the venues, the photos and RSVP.",
