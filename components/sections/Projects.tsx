@@ -15,6 +15,7 @@ type Project = {
   href?: string;
   external?: boolean;
   image: { src: string; width: number; height: number; alt: string };
+  hidden?: boolean;
 };
 
 const externalProps = (external?: boolean) =>
@@ -23,6 +24,8 @@ const externalProps = (external?: boolean) =>
 const projects: Project[] = [
   {
     title: "Retail POS & Back Office",
+    // Hidden while its database is down - delete this line to bring it back.
+    hidden: true,
     cta: "Open the POS",
     kicker: "Personal build",
     status: "DEMO",
@@ -183,7 +186,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="space-y-16 lg:space-y-24">
-          {projects.map((project, idx) => (
+          {projects.filter((p) => !p.hidden).map((project, idx) => (
             <motion.article
               key={project.title}
               variants={itemVariants}
