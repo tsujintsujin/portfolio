@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    date: "June 2023 - Sept 2026",
+    date: "June 2023 - Present",
     title: "Trade Dynamics - Associate Developer (Remote)",
-    status: "COMPLETE",
+    status: "ACTIVE",
     items: [
       "Developed client specific financial reports and reporting logic through code-based reporting.",
       "Built Amazon QuickSight dashboards used directly by clients for business decision-making.",
