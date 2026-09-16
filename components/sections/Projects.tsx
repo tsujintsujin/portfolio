@@ -84,6 +84,7 @@ const projects: Project[] = [
   },
   {
     title: "Aqua Beauty Salon Centre",
+    cta: "Open Aqua",
     kicker: "Pitch build - spec work",
     status: "PITCH",
     summary:
@@ -94,6 +95,7 @@ const projects: Project[] = [
       "A front desk console with a schedule board, bookings export, insights, clients, team hours and the full menu.",
     ],
     techs: ["NEXT.JS 15", "REACT 19", "PRISMA", "TYPESCRIPT", "TAILWIND"],
+    href: "/aqua",
     image: {
       src: "/work/aqua/home.webp",
       width: 1600,
