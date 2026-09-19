@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import type { ReactNode } from "react";
 
 type Project = {
   title: string;
@@ -9,7 +10,7 @@ type Project = {
   kicker: string;
   status: string;
   summary: string;
-  highlights?: string[];
+  highlights?: ReactNode[];
   clients?: { name: string; href: string }[];
   techs: string[];
   href?: string;
@@ -54,7 +55,20 @@ const projects: Project[] = [
     highlights: [
       "Pulls thousands of listings from 10+ sources and counting.",
       "Runs on n8n automation, with a custom Next.js front-end and a Cloudflare Worker for the API.",
-      "Credit based with google sign-in, so you can save your searches and get notified when new jobs are found.",
+      "Credit based with Google sign-in, so your resume and every digest stay saved to your account.",
+      <>
+        Has an active{" "}
+        <a
+          href="https://www.facebook.com/thejobstash"
+          target="_blank"
+          rel="noopener"
+          className="focus-ring font-medium text-accent-deep underline underline-offset-2 hover:text-ink"
+        >
+          Facebook page
+        </a>
+        , where Messenger replies are handled by an n8n auto-reply running a trained Qwen model.
+      </>,
+      "A weekly AI content pipeline writes and fact-checks the page's posts, then n8n schedules them to Facebook.",
     ],
     techs: ["NEXT.JS", "CLOUDFLARE WORKERS", "D1", "PYTHON", "TYPESCRIPT"],
     href: "https://thejobstash.com",
