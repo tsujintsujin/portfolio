@@ -52,6 +52,16 @@ const nextConfig: NextConfig = {
         source: "/aqua/:path*",
         destination: "https://aqua.justin-masiga-94.workers.dev/aqua/:path*",
       },
+      {
+        // Bates Landscaping remodel pitch (basePath /bates). Everything it loads is same-origin,
+        // so the catch-all CSP below covers it.
+        source: "/bates",
+        destination: "https://bates-landscaping.vercel.app/bates",
+      },
+      {
+        source: "/bates/:path*",
+        destination: "https://bates-landscaping.vercel.app/bates/:path*",
+      },
     ];
   },
   async headers() {
