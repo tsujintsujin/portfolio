@@ -1,30 +1,28 @@
-"use client";
-
-import { MotionConfig } from "framer-motion";
 import Header from "@/components/layout/Header";
-import SideNav from "@/components/layout/SideNav";
-import Hero from "@/components/sections/Hero";
-import Experience from "@/components/sections/Experience";
-import Projects from "@/components/sections/Projects";
-import Stack from "@/components/sections/Stack";
-import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
-import BuyMeCoffee from "@/components/sections/BuyMeCoffee";
+import Hero from "@/components/sections/Hero";
+import Work from "@/components/sections/Work";
+import Data from "@/components/sections/Data";
+import Experience from "@/components/sections/Experience";
+import Skills from "@/components/sections/Skills";
+import Contact from "@/components/sections/Contact";
+import { ChatProvider } from "@/components/assistant/ChatProvider";
+import ChatFab from "@/components/assistant/ChatFab";
 
 export default function Home() {
   return (
-    <MotionConfig reducedMotion="user">
-      <main className="overflow-hidden">
-        <Header />
-        <SideNav />
+    <ChatProvider>
+      <Header />
+      <main>
         <Hero />
+        <Work />
+        <Data />
         <Experience />
-        <Projects />
-        <Stack />
+        <Skills />
         <Contact />
-        <BuyMeCoffee />
-        <Footer />
       </main>
-    </MotionConfig>
+      <Footer />
+      <ChatFab />
+    </ChatProvider>
   );
 }

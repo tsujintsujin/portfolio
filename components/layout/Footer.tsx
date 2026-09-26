@@ -1,58 +1,19 @@
-"use client";
+import { profile } from "@/lib/content";
 
 export default function Footer() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      if (id === "experience" || id === "projects") {
-        const rect = element.getBoundingClientRect();
-        const targetY =
-          window.scrollY + rect.top - (window.innerHeight - rect.height) / 2 - 80;
-        window.scrollTo({ top: targetY, behavior: "smooth" });
-      } else {
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    }
-  };
-
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto max-w-6xl px-6 pt-10 lg:px-12">
-        <p className="font-display text-2xl italic text-ink/70">
-          Let&apos;s build something worth shipping.
+    <footer className="border-t border-line/10">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-5 py-10 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <p>
+          © 2026 {profile.name}. {profile.role}.
         </p>
-      </div>
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-xs text-faint sm:flex-row lg:px-12">
-        <p className="font-mono">
-          © 2026 Justin Masiga. Full-Stack Developer &amp; AI Operations
-          Engineer
-        </p>
-        <div className="flex gap-6">
-          <button
-            onClick={() => scrollToSection("about")}
-            className="focus-ring cursor-pointer rounded transition-colors duration-[180ms] ease-out hover:text-accent-deep"
-          >
-            About
-          </button>
-          <button
-            onClick={() => scrollToSection("experience")}
-            className="focus-ring cursor-pointer rounded transition-colors duration-[180ms] ease-out hover:text-accent-deep"
-          >
-            Experience
-          </button>
-          <button
-            onClick={() => scrollToSection("projects")}
-            className="focus-ring cursor-pointer rounded transition-colors duration-[180ms] ease-out hover:text-accent-deep"
-          >
-            Projects
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="focus-ring cursor-pointer rounded transition-colors duration-[180ms] ease-out hover:text-accent-deep"
-          >
-            Contact
-          </button>
-        </div>
+        <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
+          <a href="#work" className="focus-ring rounded hover:text-ink">Work</a>
+          <a href="#data" className="focus-ring rounded hover:text-ink">Data</a>
+          <a href="#experience" className="focus-ring rounded hover:text-ink">Experience</a>
+          <a href="#contact" className="focus-ring rounded hover:text-ink">Contact</a>
+          <a href={profile.cv} download className="focus-ring rounded hover:text-ink">CV</a>
+        </nav>
       </div>
     </footer>
   );

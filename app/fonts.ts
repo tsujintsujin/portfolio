@@ -1,23 +1,14 @@
-import { Fraunces, Figtree, Space_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
-export const fraunces = Fraunces({
+// One family for everything; the mono cut is only for figures in the data visuals.
+export const geist = Geist({
   subsets: ["latin"],
-  weight: ["300", "400", "600", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-display",
+  variable: "--font-sans",
   display: "swap",
 });
 
-export const figtree = Figtree({
+export const geistMono = Geist_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-export const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
   variable: "--font-mono",
   display: "swap",
 });

@@ -54,3 +54,7 @@ graphify-out/
 
 # generated audit output (large screenshots, regenerable)
 /docs/audit/
+
+.vercel
+.env*
+.wrangler/
