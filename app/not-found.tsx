@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Page Not Found | Justin Masiga",
+  title: "Page not found | Justin Masiga",
   description: "This page doesn't exist.",
   robots: "noindex, nofollow",
   alternates: { canonical: undefined },
@@ -10,16 +10,14 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 text-center">
-      <h1 className="font-display text-4xl font-black text-ink">404</h1>
-      <p className="max-w-sm text-muted">
-        This page doesn&apos;t exist. Head back to the homepage.
-      </p>
+    <main className="flex min-h-[70vh] flex-col items-center justify-center gap-5 px-6 text-center">
+      <h1 className="text-6xl font-semibold tracking-[-0.04em]">404</h1>
+      <p className="max-w-sm text-lg text-muted">There&apos;s nothing at this address. The homepage has everything.</p>
       <Link
         href="/"
-        className="focus-ring rounded-full bg-accent-deep px-6 py-3 text-sm font-semibold text-white transition-opacity duration-[180ms] ease-out hover:opacity-90"
+        className="focus-ring rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-canvas transition-opacity hover:opacity-85"
       >
-        Back to homepage
+        Go to the homepage
       </Link>
     </main>
   );

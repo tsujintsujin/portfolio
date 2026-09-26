@@ -1,32 +1,50 @@
-import type { Metadata } from "next";
-import "react-toastify/dist/ReactToastify.css";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { fraunces, figtree, spaceMono } from "./fonts";
-import Toaster from "@/components/ui/Toaster";
-import CustomCursor from "@/components/ui/CustomCursor";
+import { geist, geistMono } from "./fonts";
+import { projects } from "@/lib/projects";
+
+const TITLE = "Justin Masiga | Full-Stack Developer & AI Operations Engineer";
+const DESCRIPTION =
+  "Full-stack developer and AI operations engineer in the Philippines. Three years building Amazon QuickSight dashboards for national FMCG and pharma suppliers, plus production web apps, AI agents and n8n automation. Available for full-time and contract work.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://justin94.space"),
-  title: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
-  description:
-    "Justin Masiga, full-stack developer and AI operations engineer building dashboards, client tools, and automation pipelines. Based in Davao de Oro, Philippines.",
-  robots: "index, follow",
+  title: TITLE,
+  description: DESCRIPTION,
+  keywords: [
+    "Justin Masiga",
+    "full-stack developer Philippines",
+    "AI operations engineer",
+    "Amazon QuickSight developer",
+    "Next.js developer",
+    "n8n automation",
+    "AI chat agent",
+    "remote developer Philippines",
+  ],
+  authors: [{ name: "Justin Masiga", url: "https://justin94.space" }],
+  robots: { index: true, follow: true },
   alternates: { canonical: "/" },
   openGraph: {
-    type: "website",
-    title: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
-    description:
-      "Full-stack developer and AI operations engineer building dashboards, client tools, and automation pipelines. Based in Davao de Oro, Philippines.",
+    type: "profile",
+    firstName: "Justin",
+    lastName: "Masiga",
+    title: TITLE,
+    description: DESCRIPTION,
     url: "/",
-    images: ["/og-image.jpg"],
+    siteName: "Justin Masiga",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Justin Masiga, full-stack developer and AI operations engineer" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
-    description:
-      "Full-stack developer and AI operations engineer building dashboards, client tools, and automation pipelines.",
+    title: TITLE,
+    description: DESCRIPTION,
     images: ["/og-image.jpg"],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#000000", // dark is the default theme whatever the OS setting
+  colorScheme: "dark light",
 };
 
 export default function RootLayout({
@@ -37,9 +55,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`scroll-smooth ${fraunces.variable} ${figtree.variable} ${spaceMono.variable}`}
+      className={`scroll-smooth ${geist.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
     >
       <head>
+        {/* Dark is the default; apply a saved "light" choice before first paint so the page never flashes. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -54,31 +79,68 @@ export default function RootLayout({
                   url: "https://justin94.space/",
                   image: "https://justin94.space/justin-masiga.webp",
                   email: "mailto:justin.masiga.94@gmail.com",
+                  description: DESCRIPTION,
                   address: {
                     "@type": "PostalAddress",
+                    addressLocality: "Maco",
                     addressRegion: "Davao de Oro",
                     addressCountry: "PH",
+                  },
+                  alumniOf: {
+                    "@type": "CollegeOrUniversity",
+                    name: "St. Mary's College of Tagum",
+                  },
+                  hasOccupation: {
+                    "@type": "Occupation",
+                    name: "Full-Stack Developer and AI Operations Engineer",
+                    occupationLocation: { "@type": "Country", name: "Philippines" },
+                    skills: "Next.js, React, TypeScript, NestJS, Laravel, Python, Amazon QuickSight, MySQL, Cloudflare Workers, n8n, Claude API, Workers AI",
+                  },
+                  subjectOf: {
+                    "@type": "DigitalDocument",
+                    name: "Justin Masiga CV",
+                    url: "https://justin94.space/Justin_Masiga_CV.pdf",
+                    encodingFormat: "application/pdf",
                   },
                   sameAs: [
                     "https://github.com/tsujintsujin",
                     "https://www.linkedin.com/in/justin-m-992772236/",
                   ],
                   knowsAbout: [
-                    "Full-Stack Web Development",
+                    "Full-stack web development",
                     "Next.js",
-                    "AI Automation & Operations",
-                    "n8n Workflow Automation",
+                    "TypeScript",
+                    "Business intelligence",
                     "Amazon QuickSight",
-                    "Dashboard Engineering",
+                    "MySQL stored procedures",
+                    "Sales force automation reporting",
+                    "AI agents",
+                    "n8n workflow automation",
+                    "Cloudflare Workers",
                   ],
+                },
+                {
+                  "@type": "ItemList",
+                  "@id": "https://justin94.space/#work",
+                  name: "Selected work by Justin Masiga",
+                  itemListElement: projects.map((p, i) => ({
+                    "@type": "ListItem",
+                    position: i + 1,
+                    item: {
+                      "@type": "CreativeWork",
+                      name: p.name,
+                      description: p.solution,
+                      url: p.url.startsWith("http") ? p.url : `https://justin94.space${p.url}`,
+                      creator: { "@id": "https://justin94.space/#person" },
+                    },
+                  })),
                 },
                 {
                   "@type": "WebSite",
                   "@id": "https://justin94.space/#website",
                   url: "https://justin94.space/",
-                  name: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
-                  description:
-                    "Justin Masiga, full-stack developer and AI operations engineer building dashboards, client tools, and automation pipelines. Based in Davao de Oro, Philippines.",
+                  name: TITLE,
+                  description: DESCRIPTION,
                   publisher: { "@id": "https://justin94.space/#person" },
                   inLanguage: "en",
                 },
@@ -86,7 +148,7 @@ export default function RootLayout({
                   "@type": "ProfilePage",
                   "@id": "https://justin94.space/#profilepage",
                   url: "https://justin94.space/",
-                  name: "Justin Masiga | Full-Stack Developer & AI Operations Engineer",
+                  name: TITLE,
                   isPartOf: { "@id": "https://justin94.space/#website" },
                   mainEntity: { "@id": "https://justin94.space/#person" },
                 },
@@ -135,10 +197,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-bg text-ink font-body antialiased">
+      <body>
+        <div className="ambient" aria-hidden="true" />
         {children}
-        <Toaster />
-        <CustomCursor />
       </body>
     </html>
   );

@@ -1,150 +1,113 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "@/components/ui/ThemeToggle";
+import { Close, Download, Menu } from "@/components/ui/icons";
+import { profile } from "@/lib/content";
 
-const NAV_ITEMS = [
-  { id: "about", label: "About" },
+const NAV = [
+  { id: "work", label: "Work" },
+  { id: "data", label: "Data" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeId, setActiveId] = useState("about");
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      if (id === "experience") {
-        const rect = element.getBoundingClientRect();
-        const targetY =
-          window.scrollY + rect.top - (window.innerHeight - rect.height) / 2 + 10;
-        window.scrollTo({ top: targetY, behavior: "smooth" });
-      } else {
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    }
-    setMenuOpen(false);
-  };
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
-    const sections = NAV_ITEMS.map((item) =>
-      document.getElementById(item.id)
-    ).filter((el): el is HTMLElement => el !== null);
-
+    const sections = NAV.map((n) => document.getElementById(n.id)).filter((el): el is HTMLElement => !!el);
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -55% 0px" }
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: "-45% 0px -50% 0px" },
     );
-
-    sections.forEach((section) => observer.observe(section));
+    sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="relative z-50 mx-4 mt-4">
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="mx-auto max-w-6xl rounded-[1.75rem] border border-line bg-surface/90 shadow-[0_1px_2px_rgba(43,33,24,0.04),0_8px_24px_-12px_rgba(43,33,24,0.12)] backdrop-blur sm:rounded-full"
-      >
-        <div className="flex items-center justify-between px-5 py-3">
-          <a href="#" className="focus-ring rounded-full font-body text-lg font-bold text-ink">
-            Justin<span className="text-accent-deep">.</span>
+    <div className="sticky top-3 z-50 px-3 sm:top-4 sm:px-4">
+      <header className="glass mx-auto max-w-6xl rounded-[28px] sm:rounded-full">
+        <div className="flex items-center justify-between gap-3 py-2 pl-5 pr-2">
+          <a href="#top" className="focus-ring rounded-md text-[15px] font-semibold tracking-tight">
+            {profile.name}
           </a>
 
-          <nav className="hidden items-center gap-2 text-[0.8125rem] font-semibold uppercase tracking-[0.02em] sm:flex">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`focus-ring cursor-pointer rounded-full px-2 py-2 transition-colors duration-[180ms] ease-out hover:text-ink ${
-                  activeId === item.id ? "font-bold text-ink" : "text-muted"
+          <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
+            {NAV.map((n) => (
+              <a
+                key={n.id}
+                href={`#${n.id}`}
+                aria-current={active === n.id ? "true" : undefined}
+                className={`focus-ring rounded-full px-3.5 py-2 text-sm transition-colors ${
+                  active === n.id ? "bg-ink/10 text-ink" : "text-muted hover:text-ink"
                 }`}
               >
-                {item.label}
-              </button>
+                {n.label}
+              </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="focus-ring hidden cursor-pointer rounded-full bg-accent-deep px-5 py-3 text-sm font-semibold text-white transition-opacity duration-[180ms] ease-out hover:opacity-90 sm:inline-flex"
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
+            <a
+              href={profile.cv}
+              download
+              className="focus-ring hidden items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm font-medium text-canvas transition-opacity hover:opacity-85 sm:inline-flex"
             >
-              Get in touch
-            </button>
-
+              <Download className="h-4 w-4" />
+              Download CV
+            </a>
             <button
               type="button"
-              onClick={() => setMenuOpen((open) => !open)}
-              aria-expanded={menuOpen}
+              onClick={() => setOpen((o) => !o)}
+              aria-expanded={open}
               aria-controls="mobile-nav"
-              aria-label="Menu"
-              className="focus-ring flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-line text-ink transition-colors duration-[180ms] ease-out hover:border-accent-deep/40 sm:hidden"
+              aria-label={open ? "Close menu" : "Open menu"}
+              className="focus-ring grid h-10 w-10 place-items-center rounded-full text-ink md:hidden"
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                aria-hidden="true"
-              >
-                {menuOpen ? (
-                  <path d="M6 6l12 12M18 6L6 18" />
-                ) : (
-                  <path d="M4 7h16M4 12h16M4 17h16" />
-                )}
-              </svg>
+              {open ? <Close className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
-        <AnimatePresence>
-          {menuOpen && (
+        <AnimatePresence initial={false}>
+          {open && (
             <motion.nav
               id="mobile-nav"
+              aria-label="Main"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.18, ease: "easeOut" }}
-              className="overflow-hidden border-t border-line sm:hidden"
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="overflow-hidden md:hidden"
             >
-              <div className="flex flex-col gap-1 px-3 py-3">
-                {NAV_ITEMS.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`focus-ring min-h-11 cursor-pointer rounded-xl px-3 py-3 text-left text-[0.8125rem] font-semibold uppercase tracking-[0.02em] transition-colors duration-[180ms] ease-out hover:bg-bg-alt hover:text-ink ${
-                      activeId === item.id ? "font-bold text-ink" : "text-muted"
-                    }`}
+              <div className="flex flex-col gap-1 border-t border-line/10 p-3">
+                {NAV.map((n) => (
+                  <a
+                    key={n.id}
+                    href={`#${n.id}`}
+                    onClick={() => setOpen(false)}
+                    className="focus-ring rounded-2xl px-4 py-3 text-[15px] text-ink transition-colors hover:bg-ink/5"
                   >
-                    {item.label}
-                  </button>
+                    {n.label}
+                  </a>
                 ))}
-                <button
-                  onClick={() => scrollToSection("contact")}
-                  className="focus-ring mt-1 min-h-11 cursor-pointer rounded-xl bg-accent-deep px-5 py-3 text-sm font-semibold text-white transition-opacity duration-[180ms] ease-out hover:opacity-90"
+                <a
+                  href={profile.cv}
+                  download
+                  className="focus-ring mt-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-ink px-4 py-3 text-[15px] font-medium text-canvas"
                 >
-                  Get in touch
-                </button>
+                  <Download className="h-4 w-4" />
+                  Download CV
+                </a>
               </div>
             </motion.nav>
           )}
         </AnimatePresence>
-      </motion.header>
+      </header>
     </div>
   );
 }

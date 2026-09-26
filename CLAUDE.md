@@ -12,30 +12,68 @@ Rules:
 
 ---
 
-# Claude.md — AIO Freelance Portfolio
+# CLAUDE.md — Portfolio (justin94.space)
 
-## Project Overview
+Justin Masiga's portfolio, and the router for justin94.space (the `rewrites()` in `next.config.ts`
+proxy other projects under their paths; see the workspace CLAUDE.md before touching them).
 
-Next.js portfolio website for Justin Masiga, a full-stack developer & AI operations engineer. Built with Next.js 16, React 19, Tailwind CSS 3, and Framer Motion.
+**Live:** https://justin94.space/ (Vercel project `portfolio`) · **GitHub:** tsujintsujin/portfolio ·
+**Local:** `preview_start portfolio` (port 3010). Merging to master deploys.
 
-**Live:** https://justinmasiga.vercel.app/ (also served at https://justin94.space/ — see below)  
-**GitHub:** https://github.com/tsujintsujin/portfolio  
-**Local:** `npm run dev` at http://localhost:3000
+## Redesign (2026-09-26/27) — what the site is now
 
-**Cross-project notes vault:** `D:\AIO Freelance\Notes\` (Obsidian) — curated, human-maintained notes covering the whole workspace (Portfolio, Dashboard, Fiverr, this domain's routing, tooling, TODOs). Not auto-loaded like this file — check `Notes\Workspace.md` for the current project index when working on anything outside Portfolio itself, or when this file feels out of date.
+Serious, confident, glassmorphism on Apple's palette (#F5F5F7, #1D1D1F, #AAAAAA, #007AFF).
+**Dark is the default theme**; the header toggle sets `data-theme="light"` on `<html>` and saves it in
+localStorage (inline script in `app/layout.tsx` applies it before first paint). Colours are CSS variables
+(RGB triplets) in `app/globals.css`, exposed as Tailwind tokens (`canvas`, `surface`, `ink`, `muted`,
+`line`, `accent`, `accent-text`, `positive`, `negative`). One typeface: Geist (Geist Mono only for figures
+in the data tiles). `.glass` is the frosted surface; radius is set per use (hierarchy).
 
----
+Sections (`app/page.tsx`): Hero (with the live assistant console) → Work → Data → Experience → Skills → Contact.
+Removed on purpose: the floating left side nav, the paper-plane cursor, the GCash "buy me a coffee" box, toasts.
 
-## Available Skills (Use These!)
+**Content has one source:** `lib/content.ts` (from the CV, `D:\AIO Freelance\Resumes\Justin_Masiga_CV.pdf`,
+copied to `public/Justin_Masiga_CV.pdf`) and `lib/projects.ts`. The page and the AI assistant both read
+them, so they never disagree. All copy went through /humanize; project write-ups follow the CV's voice
+(problem, then what was built).
 
-Located in `.claude/skills/`:
+### Work section
+- Desktop (≥1280): `components/work/PhoneCarousel.tsx` (swipe the phone, click a side screen, arrows or
+  keys; one project visible each side, fading 0→85% toward the phone by distance; sticky) + a glass panel
+  with the problem/solution and a `DeviceMockup` (CSS monitor + phone around real screenshots).
+  Below 1280 it becomes stacked cards (no carousel).
+- Screenshots per project in `public/work/<id>/`: `phone.webp` (homepage on a phone, 390x844@2x),
+  `mock-desktop.webp` (1440x900) and `mock-mobile.webp` of the feature that matters. They were captured
+  2026-09-26 from the live sites with Playwright. TheJobStash's is a real digest from Justin's own CV
+  (email scrubbed); Aqua's is the local build's front desk on the busiest demo day, with Justin's own
+  test accounts relabelled as demo customers for the capture only.
 
-- **`/ui-ux-pro-max`** — Design, typography, color systems, responsive layouts. Use for UI/design decisions.
-- **`/frontend-design`** — Design canvas, mockups, visual prototyping.
+### AI (Cloudflare Workers AI, Llama 3.3 70B, free tier shared with the Bates demo)
+browser → `/api/chat` or `/api/analyst` (same origin) → Worker `portfolio-chat`
+(`chat-worker/`, deploy with `cd chat-worker && npx wrangler deploy`; secret `PORTFOLIO_KEY`).
+Env: `PORTFOLIO_CHAT_URL`, `PORTFOLIO_CHAT_KEY` (Vercel prod/preview/dev, `.env.local`,
+`Credentials/Portfolio/chat.env`), plus `RESEND_API_KEY`.
+- **Assistant** (`lib/assistant.ts` prompt + knowledge, `app/api/chat/route.ts`): answers about Justin,
+  says yes to availability, `<<CV>>` → download card, and for quotes collects need + name + email, then
+  `<<LEAD {...}>>` → Resend email to justin.masiga.94@gmail.com with a summary and the whole
+  conversation (Reply-To = visitor). No database: the email is the record. The hero console and the
+  floating button share one thread (`components/assistant/ChatProvider.tsx`, sessionStorage).
+  `lib/lead.ts` parses the tag (tolerates the model's slips); check: `npx tsx lib/lead.check.mts`.
+- **Analyst** (`app/api/analyst/route.ts`) over `lib/sampleData.ts` (a made-up FMCG supplier; derived
+  figures precomputed so the model never does arithmetic). Every answer is checked by `lib/grounding.ts`
+  (figures must exist in the data; region questions must use that region's figures), one corrected retry,
+  then it declines rather than guess. Check: `npx tsx lib/grounding.check.mts`.
+- The Data wall (`components/data/`) is CSS-animated columns (two copies, move by exactly one copy),
+  paused on hover/focus, still under reduced motion.
 
-**How to invoke:** Use `/skill-name` or the `Skill` tool directly. **Don't skip these** — they provide project-specific context.
+### Verifying
+Chrome pauses animation frames in a backgrounded tab, so Framer/CSS motion looks frozen when Justin's
+window isn't in front. Use headless Playwright (python) for visual/animation checks and mid-interaction
+frames; real Chrome for clicking through. `resize_window` doesn't narrow the maximized Chrome window; use
+Playwright at 390x844 for phone checks.
 
----
+ESLint has no config file in this repo (predates the redesign), so `npm run lint` fails; `npx tsc --noEmit`
+and `npm run build` are the gates.
 
 ## Discord Task Notifications
 
@@ -46,142 +84,6 @@ A `Stop` hook posts to a Discord webhook every time Claude finishes responding, 
 - **Hook:** `hooks.Stop` — runs `.claude/hooks/notify_discord.py`, which reads `transcript_path` from the hook's stdin JSON, extracts the last user request + Claude's final response text, and posts a Discord embed
 - **Debug log:** `.claude/hooks/notify_debug.log` (local-only) — check here first if a notification doesn't arrive
 - To change the channel, replace the URL in `settings.local.json` only
-
----
-
-## Known Issues & Workarounds
-
-### Tailwind CSS 4 → 3 Downgrade ✓ RESOLVED
-
-**Status:** Fixed by downgrading to Tailwind CSS 3.
-
-**Why:** Tailwind CSS 4 with `@tailwindcss/postcss` plugin broke CSS loading in dev mode. The issue was intermittent — CSS would load when DevTools opened but not on normal page loads.
-
-**Solution Applied:**
-- `package.json`: `tailwindcss: "^3"` (was `"^4"`)
-- Removed `@tailwindcss/postcss` plugin
-- `postcss.config.mjs`: Uses `tailwindcss` + `autoprefixer` (standard v3 setup)
-- `app/globals.css`: Uses `@tailwind` directives (not `@import`)
-
-**If CSS breaks again:**
-1. Clear cache: `rm -rf .next node_modules/`
-2. Reinstall: `npm install`
-3. Restart dev server: `npm run dev`
-4. Hard refresh browser: `Ctrl+Shift+R` (or `Cmd+Shift+R`)
-
-
-## Project Structure
-
-```
-Portfolio/
-├── app/
-│   ├── page.tsx              # Main home page (client component)
-│   ├── layout.tsx            # Root layout (metadata, fonts, ToastContainer)
-│   ├── globals.css           # Tailwind + custom CSS (grid texture, animations)
-│   ├── api/
-│   │   └── contact/route.ts  # Resend email API endpoint
-│   └── components/           # Component library
-│       ├── Header.tsx
-│       ├── Hero.tsx
-│       ├── Experience.tsx
-│       ├── Projects.tsx
-│       ├── Stack.tsx
-│       ├── Contact.tsx
-│       ├── BuyMeCoffee.tsx   # GCash donation modal
-│       └── Footer.tsx
-├── public/
-│   └── JustinM.jpg           # Profile photo
-├── package.json              # Dependencies (Next.js, Tailwind, Framer Motion, Resend)
-├── tailwind.config.ts        # Tailwind theme (colors, fonts, extends)
-├── postcss.config.mjs        # PostCSS plugins (tailwindcss, autoprefixer)
-├── next.config.ts            # Next.js config (image remotePatterns)
-├── .claude/
-│   ├── settings.json         # Permissions, plugins
-│   └── launch.json           # Dev server config
-└── CLAUDE.md                 # This file
-```
-
----
-
-## Testing Workflow
-
-### Visual Testing (Desktop)
-
-1. Start server: `npm run dev`
-2. Open http://localhost:3000 in Chrome
-3. Test sections:
-   - Header navigation & CTA buttons
-   - Hero section (profile image, text rendering)
-   - Experience, Projects, Stack sections
-   - Contact form (submit flow)
-   - GCash donation modal
-   - Footer links & navigation
-
-### Interactive Testing Checklist
-
-- [ ] Navigation links scroll to sections (smooth scroll)
-- [ ] Hover states on buttons & links work
-- [ ] Contact form validation (required fields)
-- [ ] Contact form submission (Resend API)
-- [ ] GCash modal opens/closes
-- [ ] Animations on scroll/load (Framer Motion)
-- [ ] Mobile responsive (test at 375px, 768px, 1024px)
-
-### Responsive Design
-
-Test at:
-- **Mobile:** 375×812 (iPhone)
-- **Tablet:** 768×1024 (iPad)
-- **Desktop:** 1280×800+ (default)
-
-Use Chrome DevTools: `F12` → Device Toolbar (`Ctrl+Shift+M`)
-
----
-
-## Dependencies & Versions
-
-| Package | Version | Notes |
-|---------|---------|-------|
-| Next.js | ^16.1.6 | Turbopack, App Router, React 19 support |
-| React | ^19.2.3 | Latest stable |
-| Tailwind CSS | ^3 | (downgraded from v4 for stability) |
-| Framer Motion | ^11.0.0 | Page & component animations |
-| Resend | ^3.2.0 | Email API (Contact form) |
-| react-toastify | ^9.1.3 | Toast notifications |
-
----
-
-## Environment Variables
-
-Create `.env.local` if needed:
-
-```env
-# Email (Resend API)
-NEXT_PUBLIC_RESEND_API_KEY=your_resend_key_here
-
-# Optional: Analytics, etc.
-```
-
-**Vercel deployment:** Set vars in Vercel project settings (Settings → Environment Variables).
-
----
-
-## Deployment
-
-### Vercel
-
-1. Push to GitHub: `git push origin master`
-2. Vercel auto-deploys on push
-3. Check build logs: https://vercel.com/tsujintsujins-projects/portfolio
-
-**Known issue (Vercel):** Same Tailwind CSS 4 build error. Solution applied locally should fix it.
-
-### Build Locally
-
-```bash
-npm run build
-npm run start
-```
 
 ---
 
@@ -209,109 +111,6 @@ Types: `feat`, `fix`, `refactor`, `test`, `docs`, `style`, `chore`
 
 ---
 
-## Common Commands
-
-```bash
-# Development
-npm run dev              # Start dev server at :3000
-npm run build           # Production build
-npm run start           # Start production server
-npm run lint            # ESLint check
-
-# Git
-git status              # See changes
-git add <file>          # Stage specific file
-git commit -m "msg"     # Commit with message
-git push                # Push to GitHub
-git log --oneline       # Recent commits
-
-# Cleaning
-rm -rf .next            # Clear Next.js cache
-rm -rf node_modules     # Clear dependencies (then: npm install)
-```
-
 ---
 
-## Contact Form (Resend API)
-
-**File:** `app/api/contact/route.ts`
-
-**Flow:**
-1. User fills form → validates client-side
-2. Form submits to `/api/contact` (POST)
-3. Resend API sends email to `justin.masiga.94@gmail.com`
-4. Toast notification on success/error
-
-**To test:**
-1. Get Resend API key: https://resend.com
-2. Set `NEXT_PUBLIC_RESEND_API_KEY` in `.env.local`
-3. Fill form at http://localhost:3000#contact
-4. Submit → check inbox
-
----
-
-## GCash Donation Modal
-
-**File:** `app/components/BuyMeCoffee.tsx`
-
-**Status:** Code written, not yet tested interactively.
-
-**To test:**
-1. Scroll to "Buy me a coffee ☕" section
-2. Click "Support with GCash" button
-3. Modal should open with QR code (or payment details)
-4. Test close button & overlay click
-
----
-
-## Troubleshooting
-
-### Page is blank after reload
-
-**Cause:** CSS not loading (usually cache issue)  
-**Fix:**
-```bash
-rm -rf .next
-npm run dev
-# Hard refresh: Ctrl+Shift+R
-```
-
-### Contact form won't submit
-
-**Check:**
-1. Browser console for errors (`F12` → Console)
-2. Network tab — see API response
-3. `.env.local` has `NEXT_PUBLIC_RESEND_API_KEY`
-4. Resend API key is valid & active
-
-### Images not loading
-
-**Check:**
-1. Image path in component (should be `/JustinM.jpg`)
-2. File exists in `public/` folder
-3. Next.js Image optimization — check `next.config.ts`
-
-### Animations not triggering
-
-**Check:**
-1. Framer Motion is imported correctly
-2. Scroll observer is working (console logs)
-3. Browser dev tools → disable animations to test other features
-
----
-
-## Notes for Claude
-
-- **Use the skills** (`/ui-ux-pro-max`, `/frontend-design`) for design decisions
-- **Read this file first** before starting work
-- **Diagnose before acting** — don't downgrade packages or make major changes without understanding the issue
-- **Test visually** — run the dev server and actually use the site, not just read code
-- **Respect local settings** — don't ignore `.claude/` folder structure
-- **Ask questions** before making assumptions
-- **Keep CLAUDE.md updated** as the project evolves
-
----
-
-**Last Updated:** 2026-08-20  
-**Author:** Justin Masiga + Claude  
-**Status:** Active development
+**Last updated:** 2026-09-27 (redesign) · Justin Masiga + Claude

@@ -1,193 +1,116 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import AssistantHeader from "@/components/assistant/AssistantHeader";
+import ChatThread from "@/components/assistant/ChatThread";
+import { useChat } from "@/components/assistant/ChatProvider";
+import { Download, GitHub, LinkedIn, Mail } from "@/components/ui/icons";
+import { profile } from "@/lib/content";
+
+// The entrance runs in CSS (.rise in globals.css), so the hero shows before JavaScript loads.
 
 export default function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  };
+  const { setConsoleVisible } = useChat();
+  const consoleRef = useRef<HTMLDivElement>(null);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+  // The floating chat button only appears once this console has scrolled away.
+  useEffect(() => {
+    const el = consoleRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setConsoleVisible(e.isIntersecting), { threshold: 0 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [setConsoleVisible]);
 
   return (
-    <section id="about" className="relative overflow-hidden">
-      <div className="texture-dots pointer-events-none absolute inset-0"></div>
-      <div className="hero-atmosphere"></div>
+    <section id="top" aria-labelledby="hero-name" className="pb-16 pt-14 sm:pt-20 lg:pb-28 lg:pt-24">
+      <div className="mx-auto grid max-w-[1440px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
+        <div>
+          <div className="rise flex items-center gap-3">
+            <Image
+              src="/justin-avatar.webp"
+              alt="Justin Masiga"
+              width={120}
+              height={120}
+              priority
+              className="h-14 w-14 rounded-full object-cover ring-1 ring-line/15"
+            />
+            <p className="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[13px]">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-positive opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-positive" />
+              </span>
+              Available now for full-time and contract work
+            </p>
+          </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-16 lg:px-12 lg:pb-24 lg:pt-20">
-        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-8">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
+          <h1
+            id="hero-name"
+            style={{ animationDelay: "80ms" }}
+            className="rise mt-8 text-[clamp(3.25rem,2.2rem+5vw,6.75rem)] font-semibold leading-[0.92] tracking-[-0.05em]"
           >
-            <motion.div
-              variants={itemVariants}
-              className="inline-flex items-center gap-2 rounded-full border border-secondary-deep/30 bg-secondary-soft px-3 py-1.5 font-body text-[0.8125rem] font-semibold text-secondary-deep"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-secondary motion-safe:animate-pulse"></span>
-              Available for freelance &amp; contract work
-            </motion.div>
+            {profile.name}
+          </h1>
+          <p
+            style={{ animationDelay: "160ms" }}
+            className="rise mt-5 text-[clamp(1.25rem,1rem+1vw,1.75rem)] font-medium tracking-[-0.02em] text-muted"
+          >
+            {profile.role}
+          </p>
+          <p style={{ animationDelay: "240ms" }} className="rise mt-6 max-w-xl text-lg leading-relaxed text-muted">
+            {profile.lede}
+          </p>
 
-            <motion.h1
-              variants={itemVariants}
-              className="mt-6 font-display tracking-[-0.02em] text-ink"
+          <div style={{ animationDelay: "320ms" }} className="rise mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href={profile.cv}
+              download
+              className="focus-ring inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[15px] font-medium text-canvas transition-opacity hover:opacity-85"
             >
-              <span className="block text-[clamp(2.75rem,2rem+3.5vw,5.5rem)] font-black leading-[0.95]">
-                Justin Masiga
-              </span>
-              <span className="mt-3 block font-normal italic leading-[1.3] text-accent-deep text-[clamp(1.25rem,1rem+1vw,1.75rem)]">
-                Full-Stack Developer &amp; AI Operations Engineer
-              </span>
-            </motion.h1>
-
-            <motion.p
-              variants={itemVariants}
-              className="mt-6 max-w-lg font-body text-[1.125rem] leading-[1.65] text-muted"
+              <Download className="h-4 w-4" />
+              Download CV
+            </a>
+            <a
+              href={`mailto:${profile.email}`}
+              className="focus-ring glass inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors hover:border-accent/50"
             >
-              I build full stack websites, client tools, and automation pipelines
-              for operations. Remote, based in the
-              Philippines. 
-              <br className="hidden sm:inline" />
-              <br className="hidden sm:inline" />
-              Open for relocation.
-            </motion.p>
-
-            <motion.div
-              variants={itemVariants}
-              className="mt-9 flex flex-wrap items-center gap-4"
-            >
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="focus-ring cursor-pointer rounded-full bg-accent-deep px-6 py-3 text-sm font-semibold text-white transition-opacity duration-[180ms] ease-out hover:opacity-90"
-              >
-                Start a project
-              </button>
+              <Mail className="h-4 w-4" />
+              Email me
+            </a>
+            <span className="ml-1 flex items-center gap-1">
               <a
-                href="mailto:justin.masiga.94@gmail.com"
-                className="focus-ring cursor-pointer rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition-colors duration-[180ms] ease-out hover:border-accent-deep/50 hover:text-accent-deep"
-              >
-                Email directly
-              </a>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="mt-10 flex items-center gap-4 border-t border-line pt-6"
-            >
-              <a
-                href="https://www.linkedin.com/in/justin-m-992772236/"
+                href={profile.linkedin}
                 target="_blank"
                 rel="noopener"
                 aria-label="LinkedIn"
-                className="focus-ring cursor-pointer rounded-full text-muted transition-colors duration-[180ms] ease-out hover:text-accent-deep"
+                className="focus-ring grid h-11 w-11 place-items-center rounded-full text-muted transition-colors hover:text-ink"
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.75h4V23h-4V8.75zM8.5 8.75h3.83v1.95h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.79 2.66 4.79 6.12V23h-4v-6.36c0-1.52-.03-3.47-2.12-3.47-2.12 0-2.45 1.66-2.45 3.36V23h-4V8.75z" />
-                </svg>
+                <LinkedIn className="h-[18px] w-[18px]" />
               </a>
               <a
-                href="https://github.com/tsujintsujin"
+                href={profile.github}
                 target="_blank"
                 rel="noopener"
                 aria-label="GitHub"
-                className="focus-ring cursor-pointer rounded-full text-muted transition-colors duration-[180ms] ease-out hover:text-accent-deep"
+                className="focus-ring grid h-11 w-11 place-items-center rounded-full text-muted transition-colors hover:text-ink"
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.14c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 015.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.08.78 2.18v3.23c0 .3.21.66.79.55A10.51 10.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z" />
-                </svg>
+                <GitHub className="h-[18px] w-[18px]" />
               </a>
-            </motion.div>
-          </motion.div>
-
-          <div className="relative grid grid-cols-2 gap-4 lg:grid-cols-1">
-            <div className="pointer-events-none absolute -inset-1 col-span-2 -z-10 -rotate-6 rounded-lg border-2 border-dashed border-accent-deep/40 lg:col-span-1"></div>
-
-            <div className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-surface lg:col-span-1 lg:aspect-[5/4]">
-              <Image
-                src="/justin-masiga.webp"
-                alt="Justin Masiga portrait"
-                fill
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
-                priority
-              />
-              <div className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/95 px-3 py-1.5 font-mono text-xs tracking-[0.04em] text-muted backdrop-blur">
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="text-accent-deep"
-                  aria-hidden="true"
-                >
-                  <path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" />
-                  <circle cx="12" cy="9" r="2.5" />
-                </svg>
-                Davao de Oro, PH
-              </div>
-            </div>
-
-            <motion.dl
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="col-span-2 grid grid-cols-2 gap-5 rounded-2xl border border-line bg-surface p-5 lg:col-span-1"
-            >
-              <div className="flex flex-col gap-1.5 border-r border-line pr-5">
-                <dd className="font-mono text-[1.75rem] font-bold leading-none text-ink">
-                  3+
-                </dd>
-                <dt className="text-[11px] leading-snug text-faint">
-                  years remote dev &amp; support
-                </dt>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <dd className="font-mono text-[1.75rem] font-bold leading-none text-ink">
-                  2+
-                </dd>
-                <dt className="text-[11px] leading-snug text-faint">
-                  years graphic design
-                </dt>
-              </div>
-            </motion.dl>
+            </span>
           </div>
+          <p style={{ animationDelay: "400ms" }} className="rise mt-6 text-sm text-muted">
+            Remote from the Philippines (GMT+8). Open to relocating.
+          </p>
+        </div>
+
+        {/* The assistant, live: the one thing on this page that shows the AI work instead of describing it */}
+        <div style={{ animationDelay: "240ms" }} id="assistant" className="rise scroll-mt-28">
+          <div ref={consoleRef} className="glass flex h-[520px] flex-col overflow-hidden rounded-[32px]">
+            <AssistantHeader />
+            <ChatThread inputId="chat-hero-input" />
+          </div>
+          <p className="mt-4 px-2 text-sm leading-relaxed text-muted">{profile.assistantIntro}</p>
         </div>
       </div>
     </section>

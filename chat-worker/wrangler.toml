@@ -1,0 +1,10 @@
+# Thin Workers AI proxy for the portfolio's assistant and data analyst. The site's server routes
+# (app/api/chat, app/api/analyst) call it with a shared key; browsers never call it directly.
+# Deploy: cd chat-worker && npx wrangler deploy   (secret: npx wrangler secret put PORTFOLIO_KEY)
+name = "portfolio-chat"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[ai]
+binding = "AI"

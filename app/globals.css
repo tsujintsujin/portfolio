@@ -2,62 +2,133 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: var(--font-body), system-ui, sans-serif;
+/* Apple palette: #F5F5F7 · #1D1D1F · #AAAAAA · #007AFF. Dark is the default theme;
+   the toggle sets data-theme="light" on <html> (see ThemeToggle and the script in layout.tsx). */
+:root {
+  color-scheme: dark;
+  --canvas: 0 0 0;
+  --surface: 29 29 31; /* #1D1D1F */
+  --ink: 245 245 247; /* #F5F5F7 */
+  --muted: 170 170 170; /* #AAAAAA */
+  --faint: 134 134 139;
+  --line: 255 255 255;
+  --accent: 0 122 255; /* #007AFF */
+  --accent-text: 41 151 255; /* the blue that stays readable on black */
+  --positive: 48 209 88;
+  --negative: 255 69 58;
+  --glass-fill: 0.55;
+  --glass-line: 0.1;
+  --glass-shadow: 0 1px 0 rgb(255 255 255 / 0.06) inset, 0 30px 60px -30px rgb(0 0 0 / 0.8);
+  --glow: 0.22;
 }
 
-/* Hide the page scrollbar; scrolling still works. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --canvas: 245 245 247;
+  --surface: 255 255 255;
+  --ink: 29 29 31;
+  --muted: 110 110 115; /* #AAAAAA fails contrast for text on light, so text uses this */
+  --faint: 150 150 155;
+  --line: 0 0 0;
+  --accent: 0 122 255;
+  --accent-text: 0 102 204;
+  --positive: 36 138 61;
+  --negative: 215 0 21;
+  --glass-fill: 0.62;
+  --glass-line: 0.07;
+  --glass-shadow: 0 1px 0 rgb(255 255 255 / 0.8) inset, 0 30px 60px -34px rgb(0 0 0 / 0.22);
+  --glow: 0.14;
+}
+
 html {
   scrollbar-width: none;
+  -webkit-text-size-adjust: 100%;
 }
 html::-webkit-scrollbar {
   display: none;
 }
 
-@media (min-width: 1024px) and (pointer: fine) {
-  body.custom-cursor-active,
-  body.custom-cursor-active * {
-    cursor: none !important;
-  }
-}
-
-@media (max-width: 1023px), (pointer: coarse) {
-  .custom-cursor {
-    display: none;
-  }
-}
-
-.texture-dots {
-  background-image: radial-gradient(#E8DFD0 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.5;
-}
-
-.texture-dots-faint {
-  background-image: radial-gradient(#E8DFD0 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.25;
-}
-
-.hero-atmosphere {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(600px circle at 15% 20%, rgba(242, 84, 45, 0.08), transparent 60%),
-    radial-gradient(500px circle at 85% 60%, rgba(61, 174, 122, 0.07), transparent 60%);
-  filter: blur(40px);
+body {
+  @apply bg-canvas font-sans text-ink antialiased;
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
 section[id] {
   scroll-margin-top: 6rem;
 }
 
-.focus-ring {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-deep focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+::selection {
+  background: rgb(var(--accent) / 0.35);
 }
 
-::selection {
-  background: #F2542D;
-  color: #FFFFFF;
+/* Frosted glass. Radius is set per use so hierarchy shows (small chips vs large panels). */
+.glass {
+  background: rgb(var(--surface) / var(--glass-fill));
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid rgb(var(--line) / var(--glass-line));
+  box-shadow: var(--glass-shadow);
+}
+
+/* Blue light behind the glass: glass needs something to blur. Fixed, so it stays put as the page scrolls. */
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40rem 32rem at 85% -5%, rgb(var(--accent) / var(--glow)), transparent 70%),
+    radial-gradient(36rem 30rem at -10% 45%, rgb(var(--accent) / calc(var(--glow) * 0.6)), transparent 70%),
+    radial-gradient(30rem 26rem at 70% 110%, rgb(var(--accent) / calc(var(--glow) * 0.7)), transparent 70%);
+}
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Data wall: each column holds two copies of its tiles and moves by one copy (50%), then repeats. */
+@keyframes wall-scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50% - 0.5rem));
+  }
+}
+.wall-col {
+  animation: wall-scroll var(--dur, 70s) linear infinite;
+  will-change: transform;
+}
+.wall-col.wall-down {
+  animation-direction: reverse;
+}
+.wall:hover .wall-col,
+.wall:focus-within .wall-col {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hero entrance: CSS, not JS, so the content is visible the moment the HTML arrives. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+.rise {
+  animation: rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
